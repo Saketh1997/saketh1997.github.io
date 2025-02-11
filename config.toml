@@ -1,0 +1,4 @@
+[Site]
+    Title = "My Website"
+    [params]
+        description = "This is my website, containing all my achievements."
