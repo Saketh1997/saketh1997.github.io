@@ -1,17 +1,31 @@
-name = "Hyde"
+name = "Coder"
 license = "MIT"
-licenselink = "https://github.com/spf13/hyde/blob/master/LICENSE.md"
-description = "An elegant open source and mobile first theme"
-tags = ["blog", "company"]
-features = ["blog", "themes", "disqus"]
-min_version = 0.53
+licenselink = "https://github.com/luizdepra/hugo-coder/blob/master/LICENSE.md"
+description = "A simple and clean blog theme for Hugo"
+homepage = "https://github.com/luizdepra/hugo-coder/"
+demosite = "https://hugo-coder.netlify.app/"
+tags = [
+  "blog",
+  "minimal",
+  "minimalist",
+  "responsive",
+  "simple",
+  "clean",
+  "personal",
+  "light",
+  "dark",
+  "dark mode"
+]
+features = [
+  "analytics",
+  "favicon",
+  "multilingual",
+  "pagination",
+  "single-column",
+  "syntax-highlighting"
+]
+min_version = "0.124.0"
 
 [author]
-    name = "spf13"
-    homepage = "http://spf13.com"
-
-# If Porting existing theme
-[original]
-    author =  "mdo"
-    homepage = "http://markdotto.com/"
-    repo = "https://www.github.com/mdo/hyde"
+name = "Luiz F. A. de Prá"
+homepage = "https://luizdepra.com"

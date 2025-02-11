@@ -1,6 +1,6 @@
-+++
-Description = ""
-Tags = ["Development", "golang"]
-Categories = ["Development", "GoLang"]
-menu = "main"
++++ 
+draft = true
+date = {{ .Date }}
+title = ""
+slug = "" 
 +++
