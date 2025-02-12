@@ -1,17 +1,15 @@
-{{ with .Site.Params.social }}
-<ul>
-  {{ range sort . "weight" }}
-    {{ if .icon }}
-      <li>
-        <a href="{{ .url | safeURL }}" aria-label="{{ .name }}" {{ if .rel }}rel="{{ .rel }}"{{ end }} {{ if .target }}target="{{ .target }}"{{ end }} {{ if .type }}type="{{ .type }}"{{ end }}>
-          <i class="{{ .icon }}" aria-hidden="true"></i>
-        </a>
-      </li>
-    {{ else }}
-      <li>
-        <a href="{{ .url | safeURL }}" aria-label="{{ .name }}" {{ if .rel }}rel="{{ .rel }}"{{ end }} {{ if .target }}target="{{ .target }}"{{ end }}>{{ .name }}</a>
-      </li>
-    {{ end }}
-  {{ end }}
-</ul>
-{{ end }}
+<a href="#">
+  <img src="images/logos/Facebook.png">
+</a>
+<a href="https://x.com/sakethrao97">
+  <img src="images/logos/Twitter.png" style="width: 24px; height: 24px;">
+</a>
+<a href="https://github.com/Saketh1997">
+  <img src="https://149461578.v2.pressablecdn.com/wp-content/uploads/2021/03/GitHub-Logo-2048x1152.png" style="width: 24px; height: 24px;">
+</a>
+<a href="https://www.linkedin.com/in/saketh-metta-137a86203/">
+  <img src="images/logos/Linkedin.png" style="width: 24px; height: 24px;">
+</a>
+<a href="https://www.instagram.com/saketh97/">
+  <img src="images/logos/Instagram.png" style="width: 24px; height: 24px;">
+</a>
