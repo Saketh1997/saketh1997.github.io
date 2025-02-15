@@ -26,7 +26,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: saketh.github.io
+      url: Saketh.github.io
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
