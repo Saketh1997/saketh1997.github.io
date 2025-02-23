@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Site</title>
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body class="background">
+
+        <div class="header">
+            <img class="logo" src="https://github.com/Saketh1997/MySite/blob/main/images/icons/logo.jpg?raw=true" alt="My logo">
+            <a  class="title" class="links" href="D:/Practice/MySite/Home.html"> Metta Saketh Srinivasa Rao </a>
+            <div class="menu">
+                <a class="links" href="D:/Practice/MySite/Home.html"> &emsp;Home&emsp; </a>
+                <a class="border">|</a>
+                <a class="links" href="D:/Practice/MySite/projects.html"> &emsp;Projects&emsp; </a>
+                <a class="border">|</a>
+                <div class="links">  
+                    <a  class="dropbtn">
+                        &emsp;Experience&emsp;
+                    </a>
+                    <div class="dropdown-content">
+                        <a class="links" href="D:/Practice/MySite/softwareExperience.html">Software Experience</a>
+                        <a class="links" href="D:/Practice/MySite/unrelatedExperience.html">Unrelated Experience</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects">
+            <ol class="tableOfContents">
+                <li>
+                    <a href="#project1">This Website</a>
+                </li>
+                <li>
+                    <a href="#project2">Accurate Query Approximation Over Learned Executions (Master's Non-Thesis Project)</a>
+                  <ol>
+                        <li>
+                            <a href="#subproject1">Online Sequential Learning</a>
+                        </li>
+                        <li>
+                            <a href="#subproject2">Ripple Algorithms</a>
+                        </li>
+                        <li>
+                            <a href="#subproject3">Co-Learning Algorithm</a>
+                        </li>
+                        <li>
+                            <a href="#subproject4">Implicit Co-Learning Algorithm</a>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+            <div class="wording">
+                <h2 id="project1">This Website</h2>
+                <div>
+                    <p>Duh! Used CSS, HTML and JAVASCRIPT for the creation of this website from scratch. I learned to use all the skill mentioned before to build this website. This was a fresh experience as I needed to research and out my imagination into words. I knew what features I wanted on my website, but I did not know the proper lingo till I researched it and no one could directly teach me this as I needed practical guidance and no one was free enough to help me, so I had to learn it all on my own. It was fun, creating this website, as it gave me a new appreciation for my love for programming.</p>
+                </div>
+
+                <h2 id="project2">Accurate Query Approximation Over Learned Executions (Master's Non-Thesis Project)</h2>
+                <div>
+                    <p>
+                        Made changes to the algorithms of POSTGRESQL, especially Nested Loop algorithm, and creted multiple algorithms that use Reinforced Learning techniques such as reward
+                        distribution. Below are the algorithms that I have helped improve:
+                    </p>
+                    <h3 id="subproject1">Online Sequential Learning</h3>
+                    <p>
+                        This algorithm tries to find the best subset of tuples from the entire table. The algorithm first explores a certain number of tuples and then finds the best rewarding tuples from those and then uses them in the exploitation process. This algorithm mainly focuses on giving a subset of the results as fast as possible. There are number of uses for such an algorithm, for example: Search Engine Results, Recommendation Systems and Fraud Detection.
+                    </p>
+                    <h3 id="subproject2">Ripple Algorithms</h3>
+                    <p>
+                        This algorithm performs a join operation between two tables using a ripple approach. The process begins by joining the first tuple of one table with all tuples of the other table. Similarly, the first tuple of the second table joins with all tuples of the first table. Subsequently, the second tuple joins with all tuples of the other table except the first one. This pattern continues iteratively, ensuring that each tuple progressively joins with a decreasing subset of the other table’s tuples. The process is repeated for all tuples in both tables until the join operation is complete.
+                    </p>
+                    <h3 id="subproject3">Co-Learning Algorithm</h3>
+                    <p>
+                        This custom nested-loop join algorithm extends PostgreSQL’s standard approach by adding a lightweight “exploration–exploitation” phase that caches subsets (or “pages”) of rows from the left and right tables. Each side alternates between exploring new tuples—tracking a “reward” for successful matches and a “failure count” for mismatches—and exploiting (revisiting) its highest-reward tuples. In other words, while it still conceptually performs a nested loop, it maintains small caches of promising tuples, selects the best ones based on accumulated rewards, and dynamically switches direction between left-to-right and right-to-left scans. This technique aims to reduce unnecessary comparisons and focus on rows more likely to produce matching join results.
+                    </p>
+                    <h3 id="subproject4">Implicit Co-Learning Algorithm</h3>
+                    <p>
+                        This algorithm supplements PostgreSQL’s basic approach with a dynamic exploration–exploitation strategy. It caches “pages” of rows from the outer (left) relation and caches/updates promising tuples from the inner (right) relation, tracking a “reward” (for each successful match) and a “failure count” (for each mismatch). After a mandatory exploration phase, the algorithm calculates average rewards on both sides and switches between “left-to-right” and “right-to-left” exploitation, aiming to reuse high-reward tuples rather than performing a naive nested loop over all data. By adaptively caching and discarding lower-reward entries, ICL reduces redundant scans and speeds up join processing, especially when data contains skewed or more-likely-to-match tuples.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+
+    </body>
+</html>

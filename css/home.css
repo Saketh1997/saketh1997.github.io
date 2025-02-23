@@ -1,0 +1,245 @@
+h1 { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h3 { 
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h4 { 
+    display: block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h5 { 
+    display: block;
+    font-size: .83em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h6 { 
+    display: block;
+    font-size: .67em;
+    margin-top: 2.33em;
+    margin-bottom: 2.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.wordingHome{
+    color: black;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen-Sans, Ubuntu, Cantarell, helvetica neue, Helvetica, 游ゴシック, pingfang sc, STXihei, 华文细黑, microsoft yahei, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 5%;
+}
+
+.header{
+    display: flex;
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen-Sans, Ubuntu, Cantarell, helvetica neue, Helvetica, 游ゴシック, pingfang sc, STXihei, 华文细黑, microsoft yahei, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+    font-style: normal;
+    align-items: center;
+}
+
+.menu{
+    display: inline;
+    margin-left: 40%;
+    width: 400px;
+    height: 40px;
+}
+
+.header .title{
+    display: inline;
+    font-variant: small-caps;
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen-Sans, Ubuntu, Cantarell, helvetica neue, Helvetica, 游ゴシック, pingfang sc, STXihei, 华文细黑, microsoft yahei, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    gap: 25px;
+}
+
+.header .logo{
+    display: inline;
+    margin-left: 15%;
+    width: 80px;
+    height: 80px;
+}
+
+.coverPhoto{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 33%;
+    max-height: 33%;
+    border-radius: 20%;
+}
+
+.socialMediaContainer{
+    display: flex;
+    position: fixed;
+    margin: 1rem;
+    left: 50%;          /* Start at the center horizontally */
+    transform: translateX(-50%); /* Offset the element's width to truly center it */
+    display: flex;      /*Align links side by side */
+    gap: 25px;          /* Space between the icons */
+    justify-content: center;
+    align-items: center;
+}
+
+.socialMediaIcons{
+    width: 40px;
+    height: 40px;
+}
+
+.background{
+    background-color:  ghostwhite;
+}
+
+.border{
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen-Sans, Ubuntu, Cantarell, helvetica neue, Helvetica, 游ゴシック, pingfang sc, STXihei, 华文细黑, microsoft yahei, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.links{
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen-Sans, Ubuntu, Cantarell, helvetica neue, Helvetica, 游ゴシック, pingfang sc, STXihei, 华文细黑, microsoft yahei, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+    width: auto;
+    height: 40px;
+    align-content: center;
+    transition: 0.5s;
+}
+
+.links:hover{
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}
+
+.dropdown-content {
+    transition: all .5s ease;
+    display: none;
+    position: absolute;
+    background-color: inherit;
+    min-width: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.links:hover .dropdown-content {
+    display: block;
+    width: 190px;
+    margin-top: 8px;
+    background-color: white;
+    color: white;
+    transform-origin: translateY(0);
+}
+
+.desc{
+    
+    width: 600px;
+    text-align: left;
+    text-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-left: 32%;
+}
+
+.projects{
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen-Sans, Ubuntu, Cantarell, helvetica neue, Helvetica, 游ゴシック, pingfang sc, STXihei, 华文细黑, microsoft yahei, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+    font-style: normal;
+    font-size: 1rem;
+    text-align: left;
+    text-wrap: wrap;
+    justify-content: center;
+    font-weight: bold;
+    display: flex;
+}
+
+.projects .wording{
+    
+    font-weight: 600;
+    width: 1000px;
+    text-align: left;
+    margin-left: 1%;
+}
+
+.projects .tableOfContents{
+    margin-left: 0.1%;
+    width: 280px;
+    color: black;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+  
+  /* Dropdown button */
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
