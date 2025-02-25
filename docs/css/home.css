@@ -183,7 +183,7 @@ h6 {
 .desc{
     
     width: 600px;
-    text-align: left;
+    text-align: center;
     text-wrap: wrap;
     display: flex;
     align-items: center;
