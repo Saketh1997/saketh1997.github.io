@@ -50,7 +50,7 @@
                     </ol>
                 </li>
                 <li>
-                    <a href="#project3">NFS server for home</a>
+                    <a href="#project3">Self-Hosted Media & NAS Server</a>
                 </li>
             </ol>
             <div class="wording">
@@ -82,13 +82,18 @@
                         This algorithm supplements PostgreSQL’s basic approach with a dynamic exploration–exploitation strategy. It caches “pages” of rows from the outer (left) relation and caches/updates promising tuples from the inner (right) relation, tracking a “reward” (for each successful match) and a “failure count” (for each mismatch). After a mandatory exploration phase, the algorithm calculates average rewards on both sides and switches between “left-to-right” and “right-to-left” exploitation, aiming to reuse high-reward tuples rather than performing a naive nested loop over all data. By adaptively caching and discarding lower-reward entries, ICL reduces redundant scans and speeds up join processing, especially when data contains skewed or more-likely-to-match tuples.
                     </p>
                 </div>
-                <h2 id="project3">NFS server for home</h2>
+                <h2 id="project3">Self-Hosted Media & NAS Server</h2>
                 <div>
                     <p>
-                        I created a NFS server similar to the cloud storage technologies of Google and Microsoft. But this is just for myself, I used an old laptop I had. 
-                        I installed Ubuntu and had to learn how to use that. Create users and permissions for the root and other user. The code for this website is also hosted
-                        on this server, along with all other projects that I have on my github. Then used samba to be able to access the space on my Windows device as a new drive.
-                        Also installed NextCloud on the old computer, so that I can access all the files on device using even my phone.
+                        Designed and deployed a self-hosted NAS and media server on Linux with Samba (SMB) and Jellyfin, supporting multi-device streaming over LAN.
+
+                        Implemented secure filesystem permission models to isolate user data while enabling service-level access for media indexing.
+
+                        Configured firewall rules and service management (systemd) to safely expose only required services.
+
+                        Enabled secure remote access via a VPN overlay, allowing persistent drive mapping without exposing SMB to the public internet.
+
+                        Debugged and resolved real-world issues involving Linux permissions, service binding, and network access.
                     </p>
                 </div>
             </div>
