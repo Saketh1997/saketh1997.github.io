@@ -7,3 +7,5 @@ git add .
 git commit -m "Update personal site"
 git push origin main
 echo "Done"
+
+kubectl delete pod -l app=personal-site --field-selector=status.phase==Running
