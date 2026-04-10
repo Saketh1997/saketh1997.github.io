@@ -1,0 +1,183 @@
+{
+    "meta": {
+      "name": "Saketh Metta",
+      "title": "CS Researcher & Systems Engineer",
+      "desc": "MS Computer Science student at Oregon State University. I modify PostgreSQL internals, run a two-node k3s homelab, and build automation that actually ships.",
+      "stats": [
+        { "num": "13TB",  "label": "Managed Storage" },
+        { "num": "12",    "label": "k3s Services" },
+        { "num": "2",     "label": "TA Courses" }
+      ]
+    },
+    "about": {
+      "institution": "Oregon State University",
+      "degree": "MS Computer Science · AI Minor",
+      "ta": "CS 325 — Analysis of Algorithms\nCS 440 — Database Management",
+      "targets": "AI/ML Eng · Systems Eng · Data Eng · Research SWE",
+      "interests": "ML Systems · Robotics · Distributed Infra · Photography",
+      "chips": [
+        { "label": "PostgreSQL internals", "hi": true },
+        { "label": "k3s / Kubernetes",     "hi": true },
+        { "label": "ML systems",           "hi": true },
+        { "label": "Python" },
+        { "label": "C / C++" },
+        { "label": "Linux" },
+        { "label": "ROS2" },
+        { "label": "NFS / mergerfs" },
+        { "label": "Cloudflare" },
+        { "label": "PyTorch" }
+      ]
+    },
+    "research": {
+      "datasets": [
+        { "key": "Dataset 1", "val": "TPC-H",  "sub": "10 GB benchmark" },
+        { "key": "Dataset 2", "val": "Cars",   "sub": "Real-world relational" },
+        { "key": "Estimators","val": "2",      "sub": "Des Raj · H-T" }
+      ],
+      "constants": [
+        "MUST_EXPLORE_TUPLE_COUNT_N",
+        "FAILURE_COUNT_N",
+        "PGNST8_LEFT_PAGE_MAX_SIZE"
+      ],
+      "methods": [
+        { "num": "01", "name": "Simple Join",      "status": "Baseline",     "cls": "ms-b" },
+        { "num": "02", "name": "Ripple Join",       "status": "Implemented",  "cls": "ms-i" },
+        { "num": "03", "name": "ROSL",              "status": "Implemented",  "cls": "ms-i" },
+        { "num": "04", "name": "OSL",               "status": "Implemented",  "cls": "ms-i" },
+        { "num": "05", "name": "LV Variants (1–3)", "status": "Active",       "cls": "ms-w" }
+      ]
+    },
+    "projects": [
+      {
+        "tag": "SYSTEMS", "badge": "Active", "badgeCls": "ba",
+        "title": "TA Grading Automation",
+        "body": "Python pipeline that walks student submission directories, unzips archives, compiles C++ with g++, executes binaries, validates output CSV ordering, and writes a summary CSV — eliminating hours of manual grading per assignment across CS 325 and CS 440.",
+        "tags": ["Python","subprocess","g++","csv","pathlib"]
+      },
+      {
+        "tag": "ML RESEARCH", "badge": "Thesis Track", "badgeCls": "br",
+        "title": "Adapter Composition at Sub-1B Scale",
+        "body": "Exploring adapter merging strategies — task arithmetic, TIES, DARE+TIES, LoraHub, MoE inference — on from-scratch trained models under 1B parameters. Targeting a real literature gap: systematic comparison at sub-1B scale with controlled training. GTX 1060 + RTX 4070 hardware.",
+        "tags": ["PyTorch","LoRA","TIES merging","MoE","CUDA"]
+      },
+      {
+        "tag": "AUTOMATION", "badge": "Active", "badgeCls": "ba",
+        "title": "Job Search Tooling",
+        "body": "Config-driven Python scraper targeting AI/ML, Robotics, and Embedded roles. Proxy-aware, filter-based, designed to surface high-signal postings and cut noise from the standard job board firehose.",
+        "tags": ["Python","Scraping","Proxy","Config-driven"]
+      },
+      {
+        "tag": "ROBOTICS", "badge": "Learning", "badgeCls": "ba",
+        "title": "ROS2 Navigation Stack",
+        "body": "Working with ROS2 Jazzy on TurtleBot3 simulation and the Nav2 navigation stack in Gazebo. Parallel interest in ESP32/BLE room detection and embedded IoT integration.",
+        "tags": ["ROS2 Jazzy","TurtleBot3","Nav2","Gazebo","ESP32"]
+      },
+      {
+        "tag": "AI ASSISTANT", "badge": "Long-term", "badgeCls": "br",
+        "title": "Jarvis-style Personal Assistant",
+        "body": "Long-horizon project: building a local, voice-driven personal assistant system with hands-free task automation, web search, data retrieval, and media playback. Combines LLM inference, speech recognition, and system integration.",
+        "tags": ["Python","Gemini API","pyttsx3","Speech"]
+      },
+      {
+        "tag": "WEB", "badge": "Live", "badgeCls": "bl",
+        "title": "sakethmetta.org",
+        "body": "This portfolio. Built on Cloudflare Pages with a Node.js/Express backend. Custom domain, GitHub-integrated deployment.",
+        "tags": ["HTML/CSS/JS","Node.js","Cloudflare Pages","GitHub"]
+      }
+    ],
+    "homelab": {
+      "access": [
+        { "label": "media.sakethmetta.org — live", "cls": "ap-live",    "pulse": true,  "delay": 0 },
+        { "label": "Cloudflare Tunnel",             "cls": "ap-tunnel",  "pulse": true,  "delay": 0.4 },
+        { "label": "Tailscale VPN",                 "cls": "ap-vpn",     "pulse": true,  "delay": 0.8 },
+        { "label": "sakethmetta.org — portfolio",   "cls": "ap-tunnel",  "pulse": false, "delay": 0 }
+      ],
+      "nodes": [
+        {
+          "name": "MachineGun", "nameCls": "b", "dotCls": "b",
+          "ip": "10.0.0.31 · huntersmachinegun",
+          "specs": [
+            { "k": "role",    "v": "k3s control plane · compute" },
+            { "k": "cpu",     "v": "12 cores" },
+            { "k": "ram",     "v": "16 GB" },
+            { "k": "gpu",     "v": "GTX 1060 6GB (passthrough to Jellyfin)" },
+            { "k": "os",      "v": "Ubuntu 24.04 bare-metal" }
+          ],
+          "services": ["Jellyfin","Sonarr","Radarr","Lidarr","Bazarr","Prowlarr","Audiobookshelf","Kavita","n8n","OpenClaw","NVIDIA plugin"]
+        },
+        {
+          "name": "hunter-inspiron", "nameCls": "", "dotCls": "",
+          "ip": "10.0.0.100",
+          "specs": [
+            { "k": "role",    "v": "NAS · download node" },
+            { "k": "cpu",     "v": "Intel i5-6200U (4T)" },
+            { "k": "ram",     "v": "8 GB DDR3 @ 1600 MT/s" },
+            { "k": "storage", "v": "2× 5.5TB ext4 → mergerfs 11TB pool" },
+            { "k": "os",      "v": "Ubuntu 24.04 LTS" }
+          ],
+          "services": ["qBittorrent-nox","NFS server","cloudflared","mergerfs"]
+        }
+      ],
+      "storage": [
+        { "k": "Total Pool", "v": "11TB",  "sub": "mergerfs · epmfs policy" },
+        { "k": "Used",       "v": "4.9TB", "sub": "47% utilization" },
+        { "k": "Filesystem", "v": "ext4",  "sub": "NFS-mounted on k3s node" },
+        { "k": "Services",   "v": "20+",   "sub": "NodePort 303xx range" }
+      ],
+      "stack": {
+        "infra":  ["k3s","mergerfs","NFS","Tailscale","Cloudflare","NVIDIA plugin"],
+        "media":  ["Jellyfin","Sonarr","Radarr","Lidarr","Prowlarr","Bazarr","n8n","Audiobookshelf"],
+        "other":  ["qBittorrent","Nextcloud","Kavita","OpenClaw"]
+      }
+    },
+    "experience": {
+      "software": [
+        {
+          "role": "Salesforce Engineer — Student",
+          "org": "Oregon State University",
+          "period": "June 2024 – Present",
+          "summary": "First professional team environment working alongside software engineers on real enterprise Salesforce infrastructure supporting university academic operations.",
+          "stack": ["Lightning Web Components","Apex","Flows","SOQL","JavaScript","HTML","CSS"],
+          "contributions": [
+            { "title": "Automated Curriculum Change", "body": "Integrated DocuSign PDFs with Salesforce Flows to simplify curriculum modifications, boosting record accuracy and efficiency." },
+            { "title": "Reporting", "body": "Set up custom permissions in Salesforce for faculty committee assignments and exam scheduling, improving resource management." },
+            { "title": "Course Validation", "body": "Implemented warnings and alerts in the POS to prevent zero-credit and duplicate courses, ensuring accurate fulfillment and tracking." },
+            { "title": "Grade Requirement Enforcement", "body": "Customized workflows to enforce departmental grade policies and streamline approvals." },
+            { "title": "Platform Expertise", "body": "Developed complex Apex classes, custom permissions, and Lightning Web Components, collaborating with cross-functional teams on high-impact projects." }
+          ]
+        }
+      ],
+      "unrelated": [
+        {
+          "role": "Senior Associate — Account Management",
+          "org": "Sutherland Global Services",
+          "period": "January 2021 – August 2023",
+          "body": "Managed and trained a team of 20, achieving recognition as the best advisor for over 24 months. Enhanced Spotify's content management by facilitating music uploads and profile updates for artists. Acted as a backup Real-Time Analyst, ensuring adherence to service level targets and optimizing workflow processes. Implemented a direct feature request service on Spotify, enabling artists to seamlessly submit features, significantly boosting user engagement."
+        },
+        {
+          "role": "D2TS Associate",
+          "org": "Amazon Development Centre",
+          "period": "August 2019 – March 2020",
+          "body": "Resolved hardware and software issues for Amazon Echo and Kindle devices, providing expert troubleshooting. Conducted comprehensive training for multiple advisors on technical support processes. Developed rapid problem analysis skills to swiftly identify and resolve issues, maintaining a consistent record as a top performer by meeting and exceeding performance metrics throughout tenure."
+        }
+      ]
+    },
+    "skills": [
+      {
+        "title": "Languages",
+        "items": ["Python","C / C++","SQL / PostgreSQL","Bash / Shell","JavaScript / Node.js","HTML / CSS"]
+      },
+      {
+        "title": "Systems & Infra",
+        "items": ["k3s / Kubernetes","Linux (Ubuntu 24.04)","NFS / mergerfs","Docker / containerd","Tailscale","Cloudflare Tunnel / Pages"]
+      },
+      {
+        "title": "ML & Research",
+        "items": ["PyTorch","LoRA / PEFT","CUDA (GTX 1060 / RTX 4070)","PostgreSQL internals","Adaptive join algorithms","Statistical estimators"]
+      },
+      {
+        "title": "Tools & Platforms",
+        "items": ["Git / GitHub","Helm","NVIDIA Device Plugin","ROS2 / Gazebo / Nav2","n8n automation","Proxmox (interest)"]
+      }
+    ]
+  }

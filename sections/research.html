@@ -1,0 +1,35 @@
+<section id="research" class="sec">
+    <div class="eyebrow">Research</div>
+    <div class="research-content reveal">
+      <div>
+        <h2 class="sec-title">PostgreSQL Join<br>Algorithm Research</h2>
+        <div class="research-body">
+          <p>My primary research contribution is modifying PostgreSQL's nested loop join executor
+             (<span class="inline-code">src/backend/executor/nodeNestloop.c</span>) to implement
+             and benchmark adaptive approximation strategies against the simple baseline.</p>
+          <p>Traditional joins require complete table scans before returning results. I'm implementing
+             and comparing online/adaptive strategies that return statistically confident approximate
+             results mid-execution — enabling early termination on large datasets like TPC-H 10GB.</p>
+          <p>Two statistical estimators — <strong>Des Raj</strong> and
+             <strong>Horvitz-Thompson</strong> — are evaluated across three LV configurations,
+             with accuracy plotted as a function of output percentage.</p>
+        </div>
+        <!-- populated by renderResearch() -->
+        <div class="dataset-row"></div>
+        <div class="const-block"></div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem">Methods Compared</div>
+        <!-- populated by renderResearch() -->
+        <div class="method-grid"></div>
+        <div style="margin-top:2rem;padding:1.2rem;background:var(--bg3);border:.5px solid var(--border2);border-radius:4px">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem">Next Steps</div>
+          <div style="font-size:.83rem;color:var(--muted);line-height:1.7">
+            Formalize experiment registry → normalize implementation variants →
+            produce final comparison grid (method × dataset × LV × accuracy × runtime × memory) →
+            convert to thesis/paper.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

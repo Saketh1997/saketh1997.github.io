@@ -1,13 +1,11 @@
 {
-  "name": "mysite",
+  "name": "sakethmetta-portfolio",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "description": "Saketh Metta portfolio — dynamic Node.js/Express",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node --watch server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +19,6 @@
   },
   "homepage": "https://github.com/Saketh1997/MySite#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^4.18.2"
   }
 }
