@@ -1,11 +1,9 @@
 #!/bin/bash
 cd ~/projects/MySite
-docker build -t personal-site:latest .
-docker save personal-site:latest | sudo k3s ctr images import -
+docker build -t ghcr.io/saketh1997/personal-site:latest .
+docker push ghcr.io/saketh1997/personal-site:latest
 KUBECONFIG=/home/hunter/.kube/config kubectl rollout restart deployment/personal-site
-echo "Done building image"
-
 git add .
-git commit -m "Update to personal site"
+git commit -m "Update personal site"
 git push origin main
-echo "Done pushing to repo"
+echo "Done"
