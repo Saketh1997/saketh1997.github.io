@@ -5,7 +5,7 @@
              Response JSON { reply: "..." }
    ---------------------------------------------------------------- */
 
-const CHAT_API_URL = '/api/chat'; // ← swap in your LLM endpoint
+const CHAT_API_URL = 'http://100.99.137.31:30800/response';
 
 (function () {
   const widget   = document.getElementById('chat-widget');
@@ -14,18 +14,6 @@ const CHAT_API_URL = '/api/chat'; // ← swap in your LLM endpoint
   const messages = document.getElementById('chat-messages');
   const input    = document.getElementById('chat-input');
   const sendBtn  = document.getElementById('chat-send');
-
-  // Conversation history sent to the API each turn
-  const history = [
-    {
-      role: 'system',
-      content: `You are Saketh Metta's AI assistant on his personal website.
-Answer questions about his research (PostgreSQL internals, distributed systems),
-projects, homelab infrastructure, and CS background at Oregon State University.
-Be concise, friendly, and technically precise. If you don't know something specific,
-say so honestly.`
-    }
-  ];
 
   let open = false;
   let busy = false;
@@ -57,7 +45,6 @@ say so honestly.`
     input.value = '';
 
     appendMsg('user', text);
-    history.push({ role: 'user', content: text });
 
     const typingEl = appendTyping();
 
@@ -65,7 +52,7 @@ say so honestly.`
       const res = await fetch(CHAT_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history })
+        body: JSON.stringify({ question: text })
       });
 
       typingEl.remove();
@@ -73,16 +60,13 @@ say so honestly.`
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const data = await res.json();
-      const reply = data.reply ?? data.content ?? data.message ?? '(no response)';
+      const reply = data ?? '(no response)';
 
-      history.push({ role: 'assistant', content: reply });
       appendMsg('bot', reply);
 
     } catch (err) {
       typingEl.remove();
       appendMsg('bot', 'Something went wrong — please try again.', true);
-      // Roll back the failed user turn so history stays clean
-      history.pop();
     }
 
     busy = false;
