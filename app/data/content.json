@@ -103,7 +103,7 @@
             { "k": "gpu",     "v": "GTX 1060 6GB (passthrough to Jellyfin)" },
             { "k": "os",      "v": "Ubuntu 24.04 bare-metal" }
           ],
-          "services": ["Jellyfin","Sonarr","Radarr","Lidarr","Bazarr","Prowlarr","Audiobookshelf","Kavita","n8n","OpenClaw","NVIDIA plugin"]
+          "services": ["Jellyfin","Audiobookshelf","Kavita","n8n","OpenClaw","NVIDIA plugin"]
         },
         {
           "name": "hunter-inspiron", "nameCls": "", "dotCls": "",
@@ -115,7 +115,7 @@
             { "k": "storage", "v": "2× 5.5TB ext4 → mergerfs 11TB pool" },
             { "k": "os",      "v": "Ubuntu 24.04 LTS" }
           ],
-          "services": ["qBittorrent-nox","NFS server","cloudflared","mergerfs"]
+          "services": ["NFS server","cloudflared","mergerfs"]
         }
       ],
       "storage": [
@@ -127,7 +127,7 @@
       "stack": {
         "infra":  ["k3s","mergerfs","NFS","Tailscale","Cloudflare","NVIDIA plugin"],
         "media":  ["Jellyfin","Sonarr","Radarr","Lidarr","Prowlarr","Bazarr","n8n","Audiobookshelf"],
-        "other":  ["qBittorrent","Nextcloud","Kavita","OpenClaw"]
+        "other":  ["Nextcloud","Kavita","OpenClaw"]
       }
     },
     "experience": {
