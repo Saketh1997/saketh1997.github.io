@@ -5,7 +5,7 @@
              Response JSON { reply: "..." }
    ---------------------------------------------------------------- */
 
-const CHAT_API_URL = 'http://100.99.137.31:30800/response';
+const CHAT_API_URL = 'https://llm.sakethmetta.org/response';
 
 (function () {
   const widget   = document.getElementById('chat-widget');
