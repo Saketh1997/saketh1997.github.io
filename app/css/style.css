@@ -24,14 +24,13 @@
      --ease:     cubic-bezier(.4,0,.2,1);
    }
    
-   html { scroll-behavior: smooth; font-size: 16px; }
+   html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
    body {
      background: var(--bg);
      color: var(--cream);
      font-family: var(--sans);
      line-height: 1.7;
      -webkit-font-smoothing: antialiased;
-     overflow-x: hidden;
    }
    ::selection  { background: var(--amber); color: #000; }
    ::-webkit-scrollbar { width: 3px; }
