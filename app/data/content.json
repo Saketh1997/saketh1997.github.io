@@ -79,10 +79,16 @@
         "tags": ["Python","Gemini API","pyttsx3","Speech"]
       },
       {
+        "tag": "SELF-HOSTED AI", "badge": "Live", "badgeCls": "bl",
+        "title": "Personal RAG Chatbot",
+        "body": "Full RAG pipeline running entirely on my homelab — no external APIs. Questions hit a FastAPI endpoint, ChromaDB retrieves the top matching context chunks via nomic-embed-text embeddings, and Qwen 2.5:3B (served by Ollama on the GTX 1060) generates a first-person response. Deployed as a Docker container on k3s, exposed via Cloudflare Tunnel, and wired into the portfolio site chatbot widget.",
+        "tags": ["Python","FastAPI","ChromaDB","Ollama","Qwen 2.5:3B","RAG","k3s","Docker"]
+      },
+      {
         "tag": "WEB", "badge": "Live", "badgeCls": "bl",
         "title": "sakethmetta.org",
-        "body": "This portfolio. Built on Cloudflare Pages with a Node.js/Express backend. Custom domain, GitHub-integrated deployment.",
-        "tags": ["HTML/CSS/JS","Node.js","Cloudflare Pages","GitHub"]
+        "body": "This portfolio — with an integrated AI chatbot powered by my own self-hosted RAG backend. Built on Node.js/Express, deployed on k3s, exposed via Cloudflare Tunnel. Custom domain, GitHub-integrated.",
+        "tags": ["HTML/CSS/JS","Node.js","k3s","Cloudflare","GitHub"]
       }
     ],
     "homelab": {
@@ -103,7 +109,7 @@
             { "k": "gpu",     "v": "GTX 1060 6GB (passthrough to Jellyfin)" },
             { "k": "os",      "v": "Ubuntu 24.04 bare-metal" }
           ],
-          "services": ["Jellyfin","Audiobookshelf","Kavita","n8n","OpenClaw","NVIDIA plugin"]
+          "services": ["Jellyfin","Audiobookshelf","Kavita","Navidrome","n8n","OpenClaw","NVIDIA plugin"]
         },
         {
           "name": "hunter-inspiron", "nameCls": "", "dotCls": "",
@@ -126,9 +132,9 @@
       ],
       "stack": {
         "infra":  ["k3s","mergerfs","NFS","Tailscale","Cloudflare","NVIDIA plugin"],
-        "media":  ["Jellyfin","n8n","Audiobookshelf", "Kavita"],
-        "ML":  ["Ollama","ChromaDB"],
-        "other":  ["Nextcloud","Kavita","OpenClaw"]
+        "media":  ["Jellyfin","Audiobookshelf","Kavita","Navidrome","n8n"],
+        "monitoring": ["Prometheus","Grafana","Alertmanager","node-exporter","kube-state-metrics","ntfy","ntfy-bridge","alertmanager-discord","nvidia-gpu-exporter"],
+        "other":  ["Nextcloud","OpenClaw","Ollama","ChromaDB"]
       }
     },
     "experience": {

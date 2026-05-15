@@ -388,6 +388,7 @@
    .stack-chip:hover { border-color: var(--border); color: var(--cream); }
    .stack-chip.a { border-color: var(--amber-lo); color: var(--amber); }
    .stack-chip.b { border-color: var(--blue-lo);  color: var(--blue); }
+   .stack-chip.c { border-color: rgba(78,196,122,.25); color: var(--green); }
    
    .arch-notes {
      background: var(--bg3); border: .5px solid var(--border2);

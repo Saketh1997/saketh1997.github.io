@@ -192,10 +192,11 @@
    
      const stackGrid = document.querySelector('.stack-grid');
      if (stackGrid && hl.stack) {
-       const { infra, media, other } = hl.stack;
+       const { infra = [], media = [], monitoring = [], other = [] } = hl.stack;
        stackGrid.innerHTML = [
          ...infra.map(s=>`<span class="stack-chip a">${s}</span>`),
          ...media.map(s=>`<span class="stack-chip b">${s}</span>`),
+         ...monitoring.map(s=>`<span class="stack-chip c">${s}</span>`),
          ...other.map(s=>`<span class="stack-chip">${s}</span>`)
        ].join('');
      }
