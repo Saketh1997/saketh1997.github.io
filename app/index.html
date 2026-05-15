@@ -42,6 +42,44 @@
     <span class="f-copy">sakethmetta.org · Cloudflare Pages</span>
   </footer>
 
+  <!-- Chatbot widget -->
+  <div id="chat-widget">
+    <button id="chat-toggle" aria-label="Open chat">
+      <svg id="chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <svg id="chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <div id="chat-panel" aria-hidden="true">
+      <div id="chat-header">
+        <span class="chat-title">
+          <span class="chat-status-dot"></span>
+          ask saketh
+        </span>
+        <span class="chat-subtitle">AI assistant — powered by my own model</span>
+      </div>
+
+      <div id="chat-messages">
+        <div class="chat-msg bot">
+          <div class="msg-bubble">Hey! I'm Saketh's AI. Ask me anything about his research, projects, or background.</div>
+        </div>
+      </div>
+
+      <div id="chat-input-row">
+        <input id="chat-input" type="text" placeholder="Type a message…" autocomplete="off" maxlength="500">
+        <button id="chat-send" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="/js/main.js"></script>
+  <script src="/js/chatbot.js"></script>
 </body>
 </html>

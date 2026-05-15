@@ -4,7 +4,7 @@ docker build -t ghcr.io/saketh1997/personal-site:latest .
 docker push ghcr.io/saketh1997/personal-site:latest
 KUBECONFIG=/home/hunter/.kube/config kubectl rollout restart deployment/personal-site
 git add .
-git commit -m "Update personal site"
+git commit -m "Adding chat bot"
 git push origin main
 echo "Done"
 
