@@ -18,13 +18,6 @@
         <div class="stack-sec-title" style="margin-bottom:.7rem">Architecture Notes</div>
         <div class="arch-notes-grid">
           <div class="arch-note">
-            <strong>Storage pipeline:</strong>
-            qBittorrent downloads land in <span class="inline-code">ServerSpace/Category/</span>,
-            arr apps hardlink into <span class="inline-code">ServerSpace/Media/</span>,
-            Jellyfin reads from <span class="inline-code">/data/Media/</span>
-            inside pods via NFS mount.
-          </div>
-          <div class="arch-note">
             <strong>Networking:</strong>
             All pods use <span class="inline-code">hostNetwork: true</span> with
             <span class="inline-code">dnsPolicy: Default</span> to work around CoreDNS instability.

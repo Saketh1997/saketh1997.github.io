@@ -55,12 +55,6 @@
         "tags": ["Python","subprocess","g++","csv","pathlib"]
       },
       {
-        "tag": "ML RESEARCH", "badge": "Thesis Track", "badgeCls": "br",
-        "title": "Adapter Composition at Sub-1B Scale",
-        "body": "Exploring adapter merging strategies — task arithmetic, TIES, DARE+TIES, LoraHub, MoE inference — on from-scratch trained models under 1B parameters. Targeting a real literature gap: systematic comparison at sub-1B scale with controlled training. GTX 1060 + RTX 4070 hardware.",
-        "tags": ["PyTorch","LoRA","TIES merging","MoE","CUDA"]
-      },
-      {
         "tag": "AUTOMATION", "badge": "Active", "badgeCls": "ba",
         "title": "Job Search Tooling",
         "body": "Config-driven Python scraper targeting AI/ML, Robotics, and Embedded roles. Proxy-aware, filter-based, designed to surface high-signal postings and cut noise from the standard job board firehose.",
@@ -126,7 +120,7 @@
       ],
       "storage": [
         { "k": "Total Pool", "v": "11TB",  "sub": "mergerfs · epmfs policy" },
-        { "k": "Used",       "v": "4.9TB", "sub": "47% utilization" },
+        { "k": "Used",       "v": "9.2TB", "sub": "84% utilization" },
         { "k": "Filesystem", "v": "ext4",  "sub": "NFS-mounted on k3s node" },
         { "k": "Services",   "v": "20+",   "sub": "NodePort 303xx range" }
       ],
