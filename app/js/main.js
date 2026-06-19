@@ -279,6 +279,9 @@
          const href = a.getAttribute('href').replace('#','');
          a.classList.toggle('active', href === current);
        });
+
+       // drive the gooey nav effect from the same scroll-spy
+       if (current) window.GooeyNav?.setActiveByHash?.('#' + current);
      });
    }
    
@@ -293,10 +296,17 @@
    
    /* ---- Boot ------------------------------------------------ */
    async function boot() {
+     window.DotField?.init();           // background — independent of sections
      await loadSections();
      await loadContent();
      initReveal();
      initNav();
+     window.GooeyNav?.init({            // header tabs (nav-links now in DOM)
+       particleDistances: [50, 8],      // tighter burst — fits a thin top bar
+       particleR: 55,
+       particleCount: 12
+     });
+     window.DecryptedText?.init();      // animate the name + all section titles
      hideLoader();
    }
    

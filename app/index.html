@@ -8,8 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/DotField.css">
+  <link rel="stylesheet" href="/css/gooeyNav.css">
 </head>
 <body>
+
+  <!-- Interactive dot-grid background (DotField) -->
+  <div id="dot-field-bg"></div>
 
   <!-- Loading overlay -->
   <div id="page-loader">
@@ -79,6 +84,10 @@
     </div>
   </div>
 
+  <!-- UI components (vanilla) — load before main.js so it can init them -->
+  <script src="/js/dotfield.js"></script>
+  <script src="/js/gooeyNav.js"></script>
+  <script src="/js/decryptedText.js"></script>
   <script src="/js/main.js"></script>
   <script src="/js/chatbot.js"></script>
 </body>
