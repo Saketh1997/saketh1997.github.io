@@ -7,8 +7,8 @@
 (function () {
   const DEFAULTS = {
     mount: '#letter-glitch-bg',
-    // tuned to the site palette (amber → cream on dark)
-    glitchColors: ['#3a2f1a', '#dfa020', '#eee8d5'],
+    // dim tones tuned to the site palette so text stays readable
+    glitchColors: ['#2a2418', '#5c4a1e', '#6b6354'],
     glitchSpeed: 50,
     centerVignette: false,
     outerVignette: true,
