@@ -1,0 +1,15 @@
+.letter-glitch-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    overflow: hidden;
+  }
+
+  /* full-viewport fixed backdrop: sits above the body bg, behind all content */
+  #letter-glitch-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }

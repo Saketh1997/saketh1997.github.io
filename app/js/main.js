@@ -296,7 +296,7 @@
    
    /* ---- Boot ------------------------------------------------ */
    async function boot() {
-     window.DotField?.init();           // background — independent of sections
+     window.LetterGlitch?.init();       // background — independent of sections
      await loadSections();
      await loadContent();
      initReveal();
