@@ -1,5 +1,6 @@
 FROM node:20-alpine
 LABEL org.opencontainers.image.source=https://github.com/Saketh1997/saketh1997.github.io
+ENV NODE_ENV=production
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev

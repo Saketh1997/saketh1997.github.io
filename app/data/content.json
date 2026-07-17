@@ -2,10 +2,10 @@
     "meta": {
       "name": "Saketh Metta",
       "title": "CS Researcher & Systems Engineer",
-      "desc": "MS Computer Science student at Oregon State University. I modify PostgreSQL internals, run a two-node k3s homelab, and build automation that actually ships.",
+      "desc": "MS Computer Science student at Oregon State University. I modify PostgreSQL internals, run a two-node k3s homelab, and build agentic AI automation that actually ships.",
       "stats": [
-        { "num": "13TB",  "label": "Managed Storage" },
-        { "num": "12",    "label": "k3s Services" },
+        { "num": "11TB",  "label": "Storage Pool" },
+        { "num": "20+",   "label": "k3s Services" },
         { "num": "2",     "label": "TA Courses" }
       ]
     },
@@ -18,7 +18,8 @@
       "chips": [
         { "label": "PostgreSQL internals", "hi": true },
         { "label": "k3s / Kubernetes",     "hi": true },
-        { "label": "ML systems",           "hi": true },
+        { "label": "Agentic AI",           "hi": true },
+        { "label": "ML systems" },
         { "label": "Python" },
         { "label": "C / C++" },
         { "label": "Linux" },
@@ -49,22 +50,34 @@
     },
     "projects": [
       {
+        "tag": "AGENTIC AI", "badge": "Live", "badgeCls": "bl",
+        "title": "Agentic Job Application Pipeline",
+        "body": "An AI agent that discovers job postings, fills application forms, and drafts answers under strict no-fabrication rules — nothing is submitted without human sign-off. A headless Claude Code agent drives a persistent Chromium via the Playwright MCP server, n8n orchestrates scanning, dedup, and Discord approve/decline gates, and a local Llama 3.1 8B handles high-frequency field routing. Safety is structural: the agent's standing rules forbid clicking Submit, and only human approval unlocks it — validated against prompt injection in live runs. Every application leaves a full audit trail.",
+        "tags": ["Claude Code","Playwright MCP","n8n","Ollama","Discord","k3s","systemd"]
+      },
+      {
+        "tag": "SELF-HOSTED AI", "badge": "Live", "badgeCls": "bl",
+        "title": "Personal RAG Chatbot",
+        "body": "Full RAG pipeline running entirely on my homelab — no external APIs. Questions hit a FastAPI endpoint, ChromaDB retrieves matching context via nomic-embed-text embeddings, and Qwen 2.5:3B (served by Ollama on the GTX 1060) answers in first person. Runs as a container on k3s behind Cloudflare Tunnel, and powers the chat widget on this site.",
+        "tags": ["Python","FastAPI","ChromaDB","Ollama","Qwen 2.5:3B","RAG","k3s","Docker"]
+      },
+      {
+        "tag": "WEB", "badge": "Live", "badgeCls": "bl",
+        "title": "sakethmetta.org",
+        "body": "This portfolio — Node.js/Express in a container on k3s, exposed via Cloudflare Tunnel, with an AI chatbot backed by my self-hosted RAG pipeline. No managed hosting anywhere in the path.",
+        "tags": ["HTML/CSS/JS","Node.js","k3s","Cloudflare","GitHub"]
+      },
+      {
         "tag": "SYSTEMS", "badge": "Active", "badgeCls": "ba",
         "title": "TA Grading Automation",
-        "body": "Python pipeline that walks student submission directories, unzips archives, compiles C++ with g++, executes binaries, validates output CSV ordering, and writes a summary CSV — eliminating hours of manual grading per assignment across CS 325 and CS 440.",
+        "body": "Python pipeline that unzips student submissions, compiles the C++ with g++, runs the binaries, validates output ordering, and writes a grade summary CSV — cutting hours of manual grading per assignment across CS 325 and CS 440.",
         "tags": ["Python","subprocess","g++","csv","pathlib"]
       },
       {
         "tag": "AUTOMATION", "badge": "Active", "badgeCls": "ba",
         "title": "Job Search Tooling",
-        "body": "Config-driven Python scraper targeting AI/ML, Robotics, and Embedded roles. Proxy-aware, filter-based, designed to surface high-signal postings and cut noise from the standard job board firehose.",
+        "body": "Config-driven, proxy-aware Python scraper targeting AI/ML, systems, and data roles. Surfaces high-signal postings from the job-board firehose and feeds the discovery stage of the agentic application pipeline.",
         "tags": ["Python","Scraping","Proxy","Config-driven"]
-      },
-      {
-        "tag": "AGENTIC AI", "badge": "Live", "badgeCls": "bl",
-        "title": "Agentic Job Application Pipeline",
-        "body": "End-to-end agentic pipeline that discovers job postings, fills application forms, and drafts free-text answers under strict no-fabrication rules — with a hard human approval gate before anything is submitted. A headless Claude Code agent drives a persistent Chromium over CDP via the Playwright MCP server; n8n orchestrates scan, freshness filtering, dedup, and Discord approve/decline buttons; a local Llama 3.1 8B handles cheap high-frequency tasks like field routing. Structurally enforced safety: the agent's standing rules forbid clicking Submit, and only the human-approved path carries the override. Every application leaves a full audit trail.",
-        "tags": ["Claude Code","Playwright MCP","n8n","Ollama","Discord","k3s","systemd"]
       },
       {
         "tag": "ROBOTICS", "badge": "Learning", "badgeCls": "ba",
@@ -75,20 +88,8 @@
       {
         "tag": "AI ASSISTANT", "badge": "Long-term", "badgeCls": "br",
         "title": "Jarvis-style Personal Assistant",
-        "body": "Long-horizon project: building a local, voice-driven personal assistant system with hands-free task automation, web search, data retrieval, and media playback. Combines LLM inference, speech recognition, and system integration.",
+        "body": "Long-horizon build: a local, voice-driven assistant for hands-free task automation, web search, data retrieval, and media playback — combining LLM inference, speech recognition, and system integration.",
         "tags": ["Python","Gemini API","pyttsx3","Speech"]
-      },
-      {
-        "tag": "SELF-HOSTED AI", "badge": "Live", "badgeCls": "bl",
-        "title": "Personal RAG Chatbot",
-        "body": "Full RAG pipeline running entirely on my homelab — no external APIs. Questions hit a FastAPI endpoint, ChromaDB retrieves the top matching context chunks via nomic-embed-text embeddings, and Qwen 2.5:3B (served by Ollama on the GTX 1060) generates a first-person response. Deployed as a Docker container on k3s, exposed via Cloudflare Tunnel, and wired into the portfolio site chatbot widget.",
-        "tags": ["Python","FastAPI","ChromaDB","Ollama","Qwen 2.5:3B","RAG","k3s","Docker"]
-      },
-      {
-        "tag": "WEB", "badge": "Live", "badgeCls": "bl",
-        "title": "sakethmetta.org",
-        "body": "This portfolio — with an integrated AI chatbot powered by my own self-hosted RAG backend. Built on Node.js/Express, deployed on k3s, exposed via Cloudflare Tunnel. Custom domain, GitHub-integrated.",
-        "tags": ["HTML/CSS/JS","Node.js","k3s","Cloudflare","GitHub"]
       }
     ],
     "homelab": {
@@ -143,14 +144,14 @@
           "role": "Salesforce Engineer — Student",
           "org": "Oregon State University",
           "period": "June 2024 – Present",
-          "summary": "First professional team environment working alongside software engineers on real enterprise Salesforce infrastructure supporting university academic operations.",
+          "summary": "Working alongside professional software engineers on the enterprise Salesforce platform behind Oregon State's academic operations — curriculum, scheduling, and degree tracking.",
           "stack": ["Lightning Web Components","Apex","Flows","SOQL","JavaScript","HTML","CSS"],
           "contributions": [
-            { "title": "Automated Curriculum Change", "body": "Integrated DocuSign PDFs with Salesforce Flows to simplify curriculum modifications, boosting record accuracy and efficiency." },
-            { "title": "Reporting", "body": "Set up custom permissions in Salesforce for faculty committee assignments and exam scheduling, improving resource management." },
-            { "title": "Course Validation", "body": "Implemented warnings and alerts in the POS to prevent zero-credit and duplicate courses, ensuring accurate fulfillment and tracking." },
-            { "title": "Grade Requirement Enforcement", "body": "Customized workflows to enforce departmental grade policies and streamline approvals." },
-            { "title": "Platform Expertise", "body": "Developed complex Apex classes, custom permissions, and Lightning Web Components, collaborating with cross-functional teams on high-impact projects." }
+            { "title": "Curriculum Change Automation", "body": "Integrated DocuSign PDFs into Salesforce Flows so curriculum changes route and record automatically instead of by hand." },
+            { "title": "Course Validation", "body": "Added warnings in the program-of-study tool that catch zero-credit and duplicate courses before they corrupt degree tracking." },
+            { "title": "Grade Policy Enforcement", "body": "Customized approval workflows to enforce departmental grade requirements automatically." },
+            { "title": "Access & Reporting", "body": "Built custom permission sets for faculty committee assignments and exam scheduling." },
+            { "title": "Platform Work", "body": "Developed Apex classes and Lightning Web Components with cross-functional university teams." }
           ]
         }
       ],
@@ -159,13 +160,13 @@
           "role": "Senior Associate — Account Management",
           "org": "Sutherland Global Services",
           "period": "January 2021 – August 2023",
-          "body": "Managed and trained a team of 20, achieving recognition as the best advisor for over 24 months. Enhanced Spotify's content management by facilitating music uploads and profile updates for artists. Acted as a backup Real-Time Analyst, ensuring adherence to service level targets and optimizing workflow processes. Implemented a direct feature request service on Spotify, enabling artists to seamlessly submit features, significantly boosting user engagement."
+          "body": "Managed and trained a team of 20 supporting Spotify's artist content operations; recognized as best advisor for 24+ months. Built out a direct feature-request service for artists and served as backup Real-Time Analyst, keeping the floor on service-level targets."
         },
         {
           "role": "D2TS Associate",
           "org": "Amazon Development Centre",
           "period": "August 2019 – March 2020",
-          "body": "Resolved hardware and software issues for Amazon Echo and Kindle devices, providing expert troubleshooting. Conducted comprehensive training for multiple advisors on technical support processes. Developed rapid problem analysis skills to swiftly identify and resolve issues, maintaining a consistent record as a top performer by meeting and exceeding performance metrics throughout tenure."
+          "body": "Troubleshot hardware and software issues for Amazon Echo and Kindle devices, trained new advisors on support processes, and held a top-performer record against metrics throughout tenure."
         }
       ]
     },
@@ -176,7 +177,7 @@
       },
       {
         "title": "Systems & Infra",
-        "items": ["k3s / Kubernetes","Linux (Ubuntu 24.04)","NFS / mergerfs","Docker / containerd","Tailscale","Cloudflare Tunnel / Pages"]
+        "items": ["k3s / Kubernetes","Linux (Ubuntu 24.04)","NFS / mergerfs","Docker / containerd","Tailscale","Cloudflare Tunnel / DNS"]
       },
       {
         "title": "ML & Research",

@@ -24,6 +24,12 @@
             Workloads pinned to MachineGun via nodeSelector.
             GPU passthrough via NVIDIA device plugin for Jellyfin transcoding.
           </div>
+          <div class="arch-note">
+            <strong>Agent workloads:</strong>
+            A persistent headless Chromium (systemd + Xvfb) owns browser state between agent runs;
+            Claude Code attaches over CDP via the Playwright MCP server. Credentials never pass
+            through a model — agents inherit logged-in sessions from the persistent profile.
+          </div>
         </div>
       </div>
     </div>

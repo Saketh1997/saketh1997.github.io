@@ -266,13 +266,15 @@
    function initNav() {
      const nav = document.querySelector('nav');
      const links = document.querySelectorAll('.nav-links a');
-   
-     window.addEventListener('scroll', () => {
+     const sections = document.querySelectorAll('section[id]');
+     let ticking = false;
+
+     function onScroll() {
        nav.classList.toggle('scrolled', window.scrollY > 60);
-   
+
        // highlight active section
        let current = '';
-       document.querySelectorAll('section[id]').forEach(sec => {
+       sections.forEach(sec => {
          if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
        });
        links.forEach(a => {
@@ -282,7 +284,12 @@
 
        // drive the gooey nav effect from the same scroll-spy
        if (current) window.GooeyNav?.setActiveByHash?.('#' + current);
-     });
+       ticking = false;
+     }
+
+     window.addEventListener('scroll', () => {
+       if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+     }, { passive: true });
    }
    
    /* ---- Toast helper ---------------------------------------- */

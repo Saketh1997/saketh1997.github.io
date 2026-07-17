@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Saketh1997/MySite#readme",
   "dependencies": {
+    "compression": "^1.8.1",
     "express": "^4.18.2"
   }
 }
