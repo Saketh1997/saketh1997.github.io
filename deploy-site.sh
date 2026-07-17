@@ -7,5 +7,5 @@ git commit -m "Adding chat bot"
 git push origin main
 echo "Done"
 
-ssh hunter@100.106.106.104 "KUBECONFIG=/home/hunter/.kube/config kubectl rollout restart deployment/personal-site"
-ssh hunter@100.106.106.104 "kubectl delete pod -l app=personal-site --field-selector=status.phase==Running"
+KUBECONFIG=/home/hunter/.kube/config kubectl rollout restart deployment/personal-site
+kubectl delete pod -l app=personal-site --field-selector=status.phase==Running
