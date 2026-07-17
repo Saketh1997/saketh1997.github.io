@@ -61,6 +61,12 @@
         "tags": ["Python","Scraping","Proxy","Config-driven"]
       },
       {
+        "tag": "AGENTIC AI", "badge": "Live", "badgeCls": "bl",
+        "title": "Agentic Job Application Pipeline",
+        "body": "End-to-end agentic pipeline that discovers job postings, fills application forms, and drafts free-text answers under strict no-fabrication rules — with a hard human approval gate before anything is submitted. A headless Claude Code agent drives a persistent Chromium over CDP via the Playwright MCP server; n8n orchestrates scan, freshness filtering, dedup, and Discord approve/decline buttons; a local Llama 3.1 8B handles cheap high-frequency tasks like field routing. Structurally enforced safety: the agent's standing rules forbid clicking Submit, and only the human-approved path carries the override. Every application leaves a full audit trail.",
+        "tags": ["Claude Code","Playwright MCP","n8n","Ollama","Discord","k3s","systemd"]
+      },
+      {
         "tag": "ROBOTICS", "badge": "Learning", "badgeCls": "ba",
         "title": "ROS2 Navigation Stack",
         "body": "Working with ROS2 Jazzy on TurtleBot3 simulation and the Nav2 navigation stack in Gazebo. Parallel interest in ESP32/BLE room detection and embedded IoT integration.",
@@ -95,7 +101,7 @@
       "nodes": [
         {
           "name": "MachineGun", "nameCls": "b", "dotCls": "b",
-          "ip": "10.0.0.31 · huntersmachinegun",
+          "ip": "internal LAN · k3s node",
           "specs": [
             { "k": "role",    "v": "k3s control plane · compute" },
             { "k": "cpu",     "v": "12 cores" },
@@ -107,7 +113,7 @@
         },
         {
           "name": "hunter-inspiron", "nameCls": "", "dotCls": "",
-          "ip": "10.0.0.100",
+          "ip": "internal LAN · NAS node",
           "specs": [
             { "k": "role",    "v": "NAS · download node" },
             { "k": "cpu",     "v": "Intel i5-6200U (4T)" },
