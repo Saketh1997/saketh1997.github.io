@@ -134,7 +134,7 @@
         "infra":  ["k3s","mergerfs","NFS","Tailscale","Cloudflare","NVIDIA plugin"],
         "media":  ["Jellyfin","Audiobookshelf","Kavita","Navidrome","n8n"],
         "monitoring": ["Prometheus","Grafana","Alertmanager","node-exporter","kube-state-metrics","ntfy","ntfy-bridge","alertmanager-discord","nvidia-gpu-exporter"],
-        "other":  ["Nextcloud","OpenClaw","Ollama","ChromaDB"]
+        "other":  ["Nextcloud","OpenClaw","Ollama","ChromaDB","Claude Code agents","Playwright MCP","Headless Chromium (CDP)","Llama 3.1 8B","Discord approvals","systemd + Xvfb"]
       }
     },
     "experience": {
@@ -185,6 +185,10 @@
       {
         "title": "Tools & Platforms",
         "items": ["Git / GitHub","Helm","NVIDIA Device Plugin","ROS2 / Gazebo / Nav2","n8n automation","Proxmox (interest)"]
+      },
+      {
+        "title": "Agentic AI & Automation",
+        "items": ["Agentic pipeline design","Claude Code / Playwright MCP","Local LLMs (Ollama / Llama 3.1)","n8n workflow orchestration","Human-in-the-loop approval flows","Prompt-injection-safe agent rules"]
       }
     ]
   }
