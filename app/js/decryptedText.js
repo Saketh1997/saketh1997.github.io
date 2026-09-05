@@ -57,6 +57,8 @@
   }
 
   function init(userOpts) {
+    // scrambling text is exactly what reduced-motion users are opting out of
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const opts = Object.assign({}, DEFAULTS, userOpts);
     const els = document.querySelectorAll(opts.selector);
 

@@ -9,8 +9,22 @@
   /* full-viewport fixed backdrop: sits above the body bg, behind all content */
   #letter-glitch-bg {
     position: fixed;
-    inset: 0;
+    top: 0; left: 0; right: 0;
+    /* lvh = viewport with the mobile toolbar retracted, so toolbar show/hide
+       never changes this box and never triggers a canvas grid rebuild */
+    height: 100vh;
+    height: 100lvh;
     z-index: -1;
     pointer-events: none;
     opacity: 0.5;            /* half-transparent so content stays readable */
+  }
+
+  /* Touch devices skip the smooth colour interpolation (battery), which makes
+     the glyphs land on their full-brightness palette colours far more often.
+     Drop the backdrop opacity to keep body copy legible on a small screen. */
+  @media (hover: none), (pointer: coarse) {
+    #letter-glitch-bg { opacity: 0.26; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #letter-glitch-bg { display: none; }
   }

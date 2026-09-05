@@ -19,6 +19,9 @@
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
 
+  const prefersReduce = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function getXY(distance, pointIndex, totalPoints) {
     const angle = ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180);
     return [distance * Math.cos(angle), distance * Math.sin(angle)];
@@ -157,7 +160,7 @@
       textEl.classList.remove('active');
       void textEl.offsetWidth; // reflow to restart the pill animation
       textEl.classList.add('active');
-      makeParticles(filter, o);
+      if (!prefersReduce()) makeParticles(filter, o);   // pill stays, burst doesn't
     }
 
     lis.forEach((li, index) => {

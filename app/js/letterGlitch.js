@@ -13,6 +13,7 @@
     centerVignette: false,
     outerVignette: true,
     smooth: true,
+    updateFraction: 0.05,   // share of the grid rerolled per glitch tick
     characters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789'
   };
 
@@ -20,8 +21,21 @@
   const charWidth = 10;
   const charHeight = 20;
 
+  const prefersReduce = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // touch devices: skip the per-frame colour interpolation (which forces a
+  // full-canvas redraw every frame) and halve the glitch rate — this is a
+  // dim 0.5-opacity backdrop, and the constant repaint was pure battery drain
+  const isCoarse = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
   function init(userOpts) {
+    if (prefersReduce()) return;
     const o = Object.assign({}, DEFAULTS, userOpts);
+    if (isCoarse) {
+      o.smooth = false;                              // no per-frame full redraw
+      o.glitchSpeed = Math.max(o.glitchSpeed, 100);  // half the tick rate
+      o.updateFraction = 0.02;                       // calmer without the fade
+    }
     const container = typeof o.mount === 'string'
       ? document.querySelector(o.mount) : o.mount;
     if (!container) return;
@@ -135,7 +149,7 @@
 
     function updateLetters() {
       if (!letters.length) return;
-      const updateCount = Math.max(1, Math.floor(letters.length * 0.05));
+      const updateCount = Math.max(1, Math.floor(letters.length * o.updateFraction));
       for (let i = 0; i < updateCount; i++) {
         const index = Math.floor(Math.random() * letters.length);
         const letter = letters[index];
@@ -179,16 +193,39 @@
       animationId = requestAnimationFrame(animate);
     }
 
+    let lastW = 0, lastH = 0;
     function handleResize() {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      const rect = parent.getBoundingClientRect();
+      const w = Math.round(rect.width), h = Math.round(rect.height);
+      // mobile toolbar show/hide fires resize constantly; if our box did not
+      // actually change, skip the teardown + grid rebuild (a visible flash)
+      if (w === lastW && h === lastH) return;
+      lastW = w; lastH = h;
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         cancelAnimationFrame(animationId);
+        animationId = null;
         resizeCanvas();
-        animate();
+        if (!document.hidden) animate();
       }, 100);
     }
 
+    // stop burning frames in a backgrounded tab
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      } else if (animationId === null) {
+        lastGlitchTime = Date.now();
+        animate();
+      }
+    });
+
     resizeCanvas();
+    const rect0 = canvas.parentElement.getBoundingClientRect();
+    lastW = Math.round(rect0.width); lastH = Math.round(rect0.height);
     animate();
     window.addEventListener('resize', handleResize);
   }

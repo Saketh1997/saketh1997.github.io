@@ -4,6 +4,11 @@
 
    const SECTIONS = ['hero','about','research','projects','homelab','experience','skills','contact'];
 
+   /* matches the CSS breakpoint where the header tabs give way to the drawer */
+   const mobileNavMQ = window.matchMedia('(max-width: 860px)');
+   const onMQChange = (mq, fn) =>
+     mq.addEventListener ? mq.addEventListener('change', fn) : mq.addListener(fn);
+
    /* ---- Utilities ------------------------------------------- */
    const h = (tag, cls, inner='', attrs={}) => {
      const el = document.createElement(tag);
@@ -262,10 +267,53 @@
      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
    }
    
+   /* ---- Mobile drawer --------------------------------------- */
+   function initMobileNav() {
+     const toggle = document.getElementById('nav-toggle');
+     const menu   = document.getElementById('mobile-menu');
+     const list   = menu && menu.querySelector('ul');
+     const source = document.querySelectorAll('.nav-links a');
+     if (!toggle || !menu || !list || !source.length) return;
+
+     // mirror the header tabs so there is one source of truth for the links
+     list.innerHTML = Array.from(source).map(a =>
+       `<li><a href="${a.getAttribute('href')}">${a.textContent}</a></li>`
+     ).join('');
+
+     const isOpen = () => document.body.classList.contains('menu-open');
+     function setOpen(state) {
+       document.body.classList.toggle('menu-open', state);
+       toggle.setAttribute('aria-expanded', String(state));
+       toggle.setAttribute('aria-label', state ? 'Close menu' : 'Open menu');
+       menu.setAttribute('aria-hidden', String(!state));
+     }
+
+     toggle.addEventListener('click', () => setOpen(!isOpen()));
+     list.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
+     menu.addEventListener('click', e => { if (e.target === menu) setOpen(false); });
+     document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) setOpen(false); });
+     // rotating to landscape past the breakpoint must not strand an open drawer
+     onMQChange(mobileNavMQ, e => { if (!e.matches) setOpen(false); });
+   }
+
+   /* ---- Gooey header tabs (desktop only) --------------------- */
+   let gooeyReady = false;
+   function initGooeyNav() {
+     // the tab list is display:none below 860px — measuring it yields a 0x0 box
+     // and the scroll-spy would fire particle bursts at the container origin
+     if (gooeyReady || mobileNavMQ.matches) return;
+     gooeyReady = true;
+     window.GooeyNav?.init({
+       particleDistances: [50, 8],      // tighter burst — fits a thin top bar
+       particleR: 55,
+       particleCount: 12
+     });
+   }
+
    /* ---- Active nav ------------------------------------------ */
    function initNav() {
      const nav = document.querySelector('nav');
-     const links = document.querySelectorAll('.nav-links a');
+     const links = document.querySelectorAll('.nav-links a, #mobile-menu a');
      const sections = document.querySelectorAll('section[id]');
      let ticking = false;
 
@@ -282,8 +330,8 @@
          a.classList.toggle('active', href === current);
        });
 
-       // drive the gooey nav effect from the same scroll-spy
-       if (current) window.GooeyNav?.setActiveByHash?.('#' + current);
+       // drive the gooey nav effect from the same scroll-spy (desktop only)
+       if (current && !mobileNavMQ.matches) window.GooeyNav?.setActiveByHash?.('#' + current);
        ticking = false;
      }
 
@@ -307,12 +355,10 @@
      await loadSections();
      await loadContent();
      initReveal();
+     initMobileNav();                   // builds the drawer from .nav-links
      initNav();
-     window.GooeyNav?.init({            // header tabs (nav-links now in DOM)
-       particleDistances: [50, 8],      // tighter burst — fits a thin top bar
-       particleR: 55,
-       particleCount: 12
-     });
+     initGooeyNav();                    // header tabs — skipped on mobile
+     onMQChange(mobileNavMQ, initGooeyNav);   // init lazily if resized to desktop
      window.DecryptedText?.init();      // animate the name + all section titles
      hideLoader();
    }

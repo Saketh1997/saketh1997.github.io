@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Saketh Metta — CS Researcher & Systems Engineer</title>
   <meta name="description" content="CS Master's student at Oregon State University. PostgreSQL internals research, k3s homelab infrastructure, and agentic AI automation.">
   <link rel="canonical" href="https://sakethmetta.org/">
@@ -45,7 +45,16 @@
       <li><a href="#skills">skills</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open menu"
+            aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- Mobile drawer — links mirrored from .nav-links by main.js -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <ul></ul>
+  </div>
 
   <!-- Sections injected here by main.js -->
   <main id="main-content"></main>
