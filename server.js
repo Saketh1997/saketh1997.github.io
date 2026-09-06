@@ -57,9 +57,42 @@ app.get('/sections/:name', (req, res) => {
   }
 });
 
+// Asset versioning. index.html is served no-cache, but CSS/JS sit behind a
+// 4h Cloudflare + browser cache — so a deploy used to leave phones running the
+// previous stylesheet until the TTL expired. Stamping a build id onto the
+// asset URLs makes each deploy request a URL no cache has seen, which is both
+// instant and safe to keep caching aggressively.
+const ASSET_DIRS = ['css', 'js'];
+function buildStamp() {
+  let newest = 0;
+  for (const dir of ASSET_DIRS) {
+    const d = path.join(ROOT, dir);
+    if (!fs.existsSync(d)) continue;
+    for (const f of fs.readdirSync(d)) {
+      const m = fs.statSync(path.join(d, f)).mtimeMs;
+      if (m > newest) newest = m;
+    }
+  }
+  return newest.toString(36);
+}
+
+const INDEX_PATH = path.join(ROOT, 'index.html');
+let indexCache = null;
+let indexKey = '';
+
+function renderIndex() {
+  const key = fs.statSync(INDEX_PATH).mtimeMs + ':' + buildStamp();
+  if (indexCache && key === indexKey) return indexCache;
+  const v = buildStamp();
+  indexCache = fs.readFileSync(INDEX_PATH, 'utf8')
+    .replace(/(href|src)="(\/(?:css|js)\/[^"?]+)"/g, `$1="$2?v=${v}"`);
+  indexKey = key;
+  return indexCache;
+}
+
 app.get('*', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
-  res.sendFile(path.join(ROOT, 'index.html'));
+  res.type('html').send(renderIndex());
 });
 
 app.listen(PORT, () => console.log(`Portfolio running at http://localhost:${PORT}`));
