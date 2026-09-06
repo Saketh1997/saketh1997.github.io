@@ -19,10 +19,19 @@
         <div class="arch-notes-grid">
           <div class="arch-note">
             <strong>Networking:</strong>
-            All pods use <span class="inline-code">hostNetwork: true</span> with
-            <span class="inline-code">dnsPolicy: Default</span> to work around CoreDNS instability.
-            Workloads pinned to MachineGun via nodeSelector.
-            GPU passthrough via NVIDIA device plugin for Jellyfin transcoding.
+            Tailscale gives every machine a stable identity across changing IPs; Cloudflare Zero Trust
+            exposes public services without opening a single inbound port. CoreDNS instability forced
+            bypassing cluster DNS — pods run <span class="inline-code">hostNetwork: true</span> with
+            <span class="inline-code">dnsPolicy: Default</span>, and Prometheus ClusterIPs are pinned
+            directly into the Grafana datasource.
+          </div>
+          <div class="arch-note">
+            <strong>Incidents, diagnosed live:</strong>
+            The SQLite-backed k3s API server timed out under combined load from Nextcloud jobs,
+            qBittorrent rechecks, and Tailscale IP thrashing causing 1.5s slow inserts on every node
+            heartbeat. A power failure corrupted an external drive's filesystem — recovered with
+            <span class="inline-code">e2fsck -f -b 32768</span>, no data lost. Both fixed without
+            taking the cluster down.
           </div>
           <div class="arch-note">
             <strong>Agent workloads:</strong>

@@ -1,195 +1,597 @@
 {
-    "meta": {
-      "name": "Saketh Metta",
-      "title": "CS Researcher & Systems Engineer",
-      "desc": "MS Computer Science student at Oregon State University. I modify PostgreSQL internals, run a two-node k3s homelab, and build agentic AI automation that actually ships.",
-      "stats": [
-        { "num": "11TB",  "label": "Storage Pool" },
-        { "num": "20+",   "label": "k3s Services" },
-        { "num": "2",     "label": "TA Courses" }
-      ]
-    },
-    "about": {
-      "institution": "Oregon State University",
-      "degree": "MS Computer Science · AI Minor",
-      "ta": "CS 325 — Analysis of Algorithms\nCS 440 — Database Management",
-      "targets": "AI/ML Eng · Systems Eng · Data Eng · Research SWE",
-      "interests": "ML Systems · Robotics · Distributed Infra · Photography",
-      "chips": [
-        { "label": "PostgreSQL internals", "hi": true },
-        { "label": "k3s / Kubernetes",     "hi": true },
-        { "label": "Agentic AI",           "hi": true },
-        { "label": "ML systems" },
-        { "label": "Python" },
-        { "label": "C / C++" },
-        { "label": "Linux" },
-        { "label": "ROS2" },
-        { "label": "NFS / mergerfs" },
-        { "label": "Cloudflare" },
-        { "label": "PyTorch" }
-      ]
-    },
-    "research": {
-      "datasets": [
-        { "key": "Dataset 1", "val": "TPC-H",  "sub": "10 GB benchmark" },
-        { "key": "Dataset 2", "val": "Cars",   "sub": "Real-world relational" },
-        { "key": "Estimators","val": "2",      "sub": "Des Raj · H-T" }
-      ],
-      "constants": [
-        "MUST_EXPLORE_TUPLE_COUNT_N",
-        "FAILURE_COUNT_N",
-        "PGNST8_LEFT_PAGE_MAX_SIZE"
-      ],
-      "methods": [
-        { "num": "01", "name": "Simple Join",      "status": "Baseline",     "cls": "ms-b" },
-        { "num": "02", "name": "Ripple Join",       "status": "Implemented",  "cls": "ms-i" },
-        { "num": "03", "name": "ROSL",              "status": "Implemented",  "cls": "ms-i" },
-        { "num": "04", "name": "OSL",               "status": "Implemented",  "cls": "ms-i" },
-        { "num": "05", "name": "LV Variants (1–3)", "status": "Active",       "cls": "ms-w" }
-      ]
-    },
-    "projects": [
+  "meta": {
+    "name": "Saketh Metta",
+    "title": "CS Researcher & Systems Engineer",
+    "desc": "MS Computer Science graduate from Oregon State University. I implement adaptive join algorithms inside PostgreSQL's C executor, run a two-node k3s homelab, and build agentic AI automation that actually ships.",
+    "stats": [
       {
-        "tag": "AGENTIC AI", "badge": "Live", "badgeCls": "bl",
-        "title": "Agentic Job Application Pipeline",
-        "body": "An AI agent that discovers job postings, fills application forms, and drafts answers under strict no-fabrication rules — nothing is submitted without human sign-off. A headless Claude Code agent drives a persistent Chromium via the Playwright MCP server, n8n orchestrates scanning, dedup, and Discord approve/decline gates, and a local Llama 3.1 8B handles high-frequency field routing. Safety is structural: the agent's standing rules forbid clicking Submit, and only human approval unlocks it — validated against prompt injection in live runs. Every application leaves a full audit trail.",
-        "tags": ["Claude Code","Playwright MCP","n8n","Ollama","Discord","k3s","systemd"]
+        "num": "11TB",
+        "label": "Storage Pool"
       },
       {
-        "tag": "SELF-HOSTED AI", "badge": "Live", "badgeCls": "bl",
-        "title": "Personal RAG Chatbot",
-        "body": "Full RAG pipeline running entirely on my homelab — no external APIs. Questions hit a FastAPI endpoint, ChromaDB retrieves matching context via nomic-embed-text embeddings, and Qwen 2.5:3B (served by Ollama on the GTX 1060) answers in first person. Runs as a container on k3s behind Cloudflare Tunnel, and powers the chat widget on this site.",
-        "tags": ["Python","FastAPI","ChromaDB","Ollama","Qwen 2.5:3B","RAG","k3s","Docker"]
+        "num": "24",
+        "label": "Pods Running"
       },
       {
-        "tag": "WEB", "badge": "Live", "badgeCls": "bl",
-        "title": "sakethmetta.org",
-        "body": "This portfolio — Node.js/Express in a container on k3s, exposed via Cloudflare Tunnel, with an AI chatbot backed by my self-hosted RAG pipeline. No managed hosting anywhere in the path.",
-        "tags": ["HTML/CSS/JS","Node.js","k3s","Cloudflare","GitHub"]
-      },
-      {
-        "tag": "SYSTEMS", "badge": "Active", "badgeCls": "ba",
-        "title": "TA Grading Automation",
-        "body": "Python pipeline that unzips student submissions, compiles the C++ with g++, runs the binaries, validates output ordering, and writes a grade summary CSV — cutting hours of manual grading per assignment across CS 325 and CS 440.",
-        "tags": ["Python","subprocess","g++","csv","pathlib"]
-      },
-      {
-        "tag": "AUTOMATION", "badge": "Active", "badgeCls": "ba",
-        "title": "Job Search Tooling",
-        "body": "Config-driven, proxy-aware Python scraper targeting AI/ML, systems, and data roles. Surfaces high-signal postings from the job-board firehose and feeds the discovery stage of the agentic application pipeline.",
-        "tags": ["Python","Scraping","Proxy","Config-driven"]
-      },
-      {
-        "tag": "ROBOTICS", "badge": "Learning", "badgeCls": "ba",
-        "title": "ROS2 Navigation Stack",
-        "body": "Working with ROS2 Jazzy on TurtleBot3 simulation and the Nav2 navigation stack in Gazebo. Parallel interest in ESP32/BLE room detection and embedded IoT integration.",
-        "tags": ["ROS2 Jazzy","TurtleBot3","Nav2","Gazebo","ESP32"]
-      },
-      {
-        "tag": "AI ASSISTANT", "badge": "Long-term", "badgeCls": "br",
-        "title": "Jarvis-style Personal Assistant",
-        "body": "Long-horizon build: a local, voice-driven assistant for hands-free task automation, web search, data retrieval, and media playback — combining LLM inference, speech recognition, and system integration.",
-        "tags": ["Python","Gemini API","pyttsx3","Speech"]
-      }
-    ],
-    "homelab": {
-      "access": [
-        { "label": "media.sakethmetta.org — live", "cls": "ap-live",    "pulse": true,  "delay": 0 },
-        { "label": "Cloudflare Tunnel",             "cls": "ap-tunnel",  "pulse": true,  "delay": 0.4 },
-        { "label": "Tailscale VPN",                 "cls": "ap-vpn",     "pulse": true,  "delay": 0.8 },
-        { "label": "sakethmetta.org — portfolio",   "cls": "ap-tunnel",  "pulse": false, "delay": 0 }
-      ],
-      "nodes": [
-        {
-          "name": "MachineGun", "nameCls": "b", "dotCls": "b",
-          "ip": "internal LAN · k3s node",
-          "specs": [
-            { "k": "role",    "v": "k3s control plane · compute" },
-            { "k": "cpu",     "v": "12 cores" },
-            { "k": "ram",     "v": "16 GB" },
-            { "k": "gpu",     "v": "GTX 1060 6GB (passthrough to Jellyfin)" },
-            { "k": "os",      "v": "Ubuntu 24.04 bare-metal" }
-          ],
-          "services": ["Jellyfin","Audiobookshelf","Kavita","Navidrome","n8n","OpenClaw","NVIDIA plugin"]
-        },
-        {
-          "name": "hunter-inspiron", "nameCls": "", "dotCls": "",
-          "ip": "internal LAN · NAS node",
-          "specs": [
-            { "k": "role",    "v": "NAS · download node" },
-            { "k": "cpu",     "v": "Intel i5-6200U (4T)" },
-            { "k": "ram",     "v": "8 GB DDR3 @ 1600 MT/s" },
-            { "k": "storage", "v": "2× 5.5TB ext4 → mergerfs 11TB pool" },
-            { "k": "os",      "v": "Ubuntu 24.04 LTS" }
-          ],
-          "services": ["NFS server","cloudflared","mergerfs"]
-        }
-      ],
-      "storage": [
-        { "k": "Total Pool", "v": "11TB",  "sub": "mergerfs · epmfs policy" },
-        { "k": "Used",       "v": "9.2TB", "sub": "84% utilization" },
-        { "k": "Filesystem", "v": "ext4",  "sub": "NFS-mounted on k3s node" },
-        { "k": "Services",   "v": "20+",   "sub": "NodePort 303xx range" }
-      ],
-      "stack": {
-        "infra":  ["k3s","mergerfs","NFS","Tailscale","Cloudflare","NVIDIA plugin"],
-        "media":  ["Jellyfin","Audiobookshelf","Kavita","Navidrome","n8n"],
-        "monitoring": ["Prometheus","Grafana","Alertmanager","node-exporter","kube-state-metrics","ntfy","ntfy-bridge","alertmanager-discord","nvidia-gpu-exporter"],
-        "other":  ["Nextcloud","OpenClaw","Ollama","ChromaDB","Claude Code agents","Playwright MCP","Headless Chromium (CDP)","Llama 3.1 8B","Discord approvals","systemd + Xvfb"]
-      }
-    },
-    "experience": {
-      "software": [
-        {
-          "role": "Salesforce Engineer — Student",
-          "org": "Oregon State University",
-          "period": "June 2024 – Present",
-          "summary": "Working alongside professional software engineers on the enterprise Salesforce platform behind Oregon State's academic operations — curriculum, scheduling, and degree tracking.",
-          "stack": ["Lightning Web Components","Apex","Flows","SOQL","JavaScript","HTML","CSS"],
-          "contributions": [
-            { "title": "Curriculum Change Automation", "body": "Integrated DocuSign PDFs into Salesforce Flows so curriculum changes route and record automatically instead of by hand." },
-            { "title": "Course Validation", "body": "Added warnings in the program-of-study tool that catch zero-credit and duplicate courses before they corrupt degree tracking." },
-            { "title": "Grade Policy Enforcement", "body": "Customized approval workflows to enforce departmental grade requirements automatically." },
-            { "title": "Access & Reporting", "body": "Built custom permission sets for faculty committee assignments and exam scheduling." },
-            { "title": "Platform Work", "body": "Developed Apex classes and Lightning Web Components with cross-functional university teams." }
-          ]
-        }
-      ],
-      "unrelated": [
-        {
-          "role": "Senior Associate — Account Management",
-          "org": "Sutherland Global Services",
-          "period": "January 2021 – August 2023",
-          "body": "Managed and trained a team of 20 supporting Spotify's artist content operations; recognized as best advisor for 24+ months. Built out a direct feature-request service for artists and served as backup Real-Time Analyst, keeping the floor on service-level targets."
-        },
-        {
-          "role": "D2TS Associate",
-          "org": "Amazon Development Centre",
-          "period": "August 2019 – March 2020",
-          "body": "Troubleshot hardware and software issues for Amazon Echo and Kindle devices, trained new advisors on support processes, and held a top-performer record against metrics throughout tenure."
-        }
-      ]
-    },
-    "skills": [
-      {
-        "title": "Languages",
-        "items": ["Python","C / C++","SQL / PostgreSQL","Bash / Shell","JavaScript / Node.js","HTML / CSS"]
-      },
-      {
-        "title": "Systems & Infra",
-        "items": ["k3s / Kubernetes","Linux (Ubuntu 24.04)","NFS / mergerfs","Docker / containerd","Tailscale","Cloudflare Tunnel / DNS"]
-      },
-      {
-        "title": "ML & Research",
-        "items": ["PyTorch","LoRA / PEFT","CUDA (GTX 1060 / RTX 4070)","PostgreSQL internals","Adaptive join algorithms","Statistical estimators"]
-      },
-      {
-        "title": "Tools & Platforms",
-        "items": ["Git / GitHub","Helm","NVIDIA Device Plugin","ROS2 / Gazebo / Nav2","n8n automation","Proxmox (interest)"]
-      },
-      {
-        "title": "Agentic AI & Automation",
-        "items": ["Agentic pipeline design","Claude Code / Playwright MCP","Local LLMs (Ollama / Llama 3.1)","n8n workflow orchestration","Human-in-the-loop approval flows","Prompt-injection-safe agent rules"]
+        "num": "3.7",
+        "label": "MS GPA"
       }
     ]
-  }
+  },
+  "about": {
+    "institution": "Oregon State University — graduated June 2026",
+    "degree": "MS Computer Science · AI Minor · GPA 3.7",
+    "ta": "CS 325 — Analysis of Algorithms\nCS 440 — Database Management",
+    "targets": "SWE · ML Engineering · Robotics Software",
+    "interests": "Database Internals · ML Systems · Robotics · Distributed Infra",
+    "chips": [
+      {
+        "label": "PostgreSQL internals",
+        "hi": true
+      },
+      {
+        "label": "k3s / Kubernetes",
+        "hi": true
+      },
+      {
+        "label": "Agentic AI",
+        "hi": true
+      },
+      {
+        "label": "C systems programming"
+      },
+      {
+        "label": "Probabilistic algorithms"
+      },
+      {
+        "label": "PyTorch"
+      },
+      {
+        "label": "Python"
+      },
+      {
+        "label": "C / C++"
+      },
+      {
+        "label": "Java"
+      },
+      {
+        "label": "Linux"
+      },
+      {
+        "label": "ROS2"
+      },
+      {
+        "label": "CUDA / OpenMP"
+      },
+      {
+        "label": "NFS / mergerfs"
+      },
+      {
+        "label": "Cloudflare"
+      }
+    ]
+  },
+  "research": {
+    "datasets": [
+      {
+        "key": "Dataset 1",
+        "val": "TPC-H",
+        "sub": "10 GB benchmark"
+      },
+      {
+        "key": "Dataset 2",
+        "val": "Cars",
+        "sub": "Real-world relational"
+      },
+      {
+        "key": "Accuracy",
+        "val": "within 8%",
+        "sub": "vs. Ripple Join baseline"
+      }
+    ],
+    "constants": [
+      "MUST_EXPLORE_TUPLE_COUNT_N",
+      "FAILURE_COUNT_N",
+      "PGNST8_LEFT_PAGE_MAX_SIZE"
+    ],
+    "methods": [
+      {
+        "num": "01",
+        "name": "Simple Join",
+        "status": "Baseline",
+        "cls": "ms-b"
+      },
+      {
+        "num": "02",
+        "name": "Ripple Join",
+        "status": "Baseline",
+        "cls": "ms-b"
+      },
+      {
+        "num": "03",
+        "name": "OSL",
+        "status": "Implemented",
+        "cls": "ms-i"
+      },
+      {
+        "num": "04",
+        "name": "ROSL + ISPW",
+        "status": "Implemented",
+        "cls": "ms-i"
+      },
+      {
+        "num": "05",
+        "name": "Confidence Intervals",
+        "status": "Active",
+        "cls": "ms-w"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "tag": "RESEARCH",
+      "badge": "Active",
+      "badgeCls": "br",
+      "title": "PostgreSQL Adaptive Joins",
+      "body": "Co-author on a paper implementing OSL and ROSL adaptive join algorithms directly inside PostgreSQL's NestLoop executor in C. OSL ranks outer tuples by a multi-armed-bandit reward from N-Failure exploration; ROSL adds an unbiased estimator using Inverse Selection Probability Weighting so the query can report approximate aggregates mid-execution with valid confidence intervals. Within 8% of Ripple Join, significantly faster on large inputs. Targeting VLDB, SIGMOD, or AIDB.",
+      "tags": [
+        "C",
+        "PostgreSQL",
+        "nodeNestloop.c",
+        "Bandits",
+        "Statistics"
+      ]
+    },
+    {
+      "tag": "AGENTIC AI",
+      "badge": "Live",
+      "badgeCls": "bl",
+      "title": "Agentic Job Application Pipeline",
+      "body": "A bash-orchestrated pipeline of headless Claude Code agents that extracts job descriptions with Playwright, tailors a one-page resume from a canonical CV through deterministic render and fact-verification gates, and fills application forms — always stopping before submission for human review. Includes quota-aware retry, session-resume logic, and multi-provider LLM routing through a local gateway (OmniRoute). Built on the open-source career-ops framework; I designed the workflow, validation gates, and failure handling, and operate it daily.",
+      "tags": [
+        "Claude Code",
+        "Playwright",
+        "OmniRoute",
+        "Bash",
+        "k3s"
+      ]
+    },
+    {
+      "tag": "SELF-HOSTED AI",
+      "badge": "Live",
+      "badgeCls": "bl",
+      "title": "Personal RAG Chatbot",
+      "body": "Full RAG pipeline running entirely on my homelab — no external APIs. Questions hit a FastAPI endpoint, ChromaDB retrieves matching context via nomic-embed-text embeddings, and Llama 3.1 8B (served by Ollama on the GTX 1060) answers in first person from structured personal documents. Runs as a container on k3s behind Cloudflare Tunnel, and powers the chat widget on this site.",
+      "tags": [
+        "Python",
+        "FastAPI",
+        "ChromaDB",
+        "Ollama",
+        "Llama 3.1 8B",
+        "RAG"
+      ]
+    },
+    {
+      "tag": "WEB",
+      "badge": "Live",
+      "badgeCls": "bl",
+      "title": "sakethmetta.org",
+      "body": "This portfolio — Node.js/Express in a container on k3s, exposed via Cloudflare Tunnel, with the self-hosted RAG chatbot wired in. No managed hosting anywhere in the path.",
+      "tags": [
+        "HTML/CSS/JS",
+        "Node.js",
+        "k3s",
+        "Cloudflare",
+        "GitHub"
+      ]
+    },
+    {
+      "tag": "SYSTEMS",
+      "badge": "Active",
+      "badgeCls": "ba",
+      "title": "TA Grading Automation",
+      "body": "Python pipeline that unzips student submissions, compiles the C++ with g++, runs the binaries, validates output ordering, and writes a graded summary CSV — cutting hours of manual grading per assignment across CS 325 and CS 440.",
+      "tags": [
+        "Python",
+        "subprocess",
+        "g++",
+        "csv",
+        "pathlib"
+      ]
+    },
+    {
+      "tag": "ROBOTICS",
+      "badge": "Learning",
+      "badgeCls": "ba",
+      "title": "ROS2 Navigation Stack",
+      "body": "Working through ROS2 with Gazebo simulation and the Nav2 navigation stack, targeting autonomous robot navigation and sensor integration.",
+      "tags": [
+        "ROS2",
+        "Gazebo",
+        "Nav2",
+        "Python"
+      ]
+    },
+    {
+      "tag": "ML",
+      "badge": "Planned",
+      "badgeCls": "br",
+      "title": "LLM Pretraining from Scratch",
+      "body": "A 350M-parameter model trained from scratch on general text. The goal is not the model — it is understanding pretraining pipelines end to end: data preprocessing, learning-rate schedules, and reading loss curves honestly. Preparation for PhD and ML engineering work.",
+      "tags": [
+        "PyTorch",
+        "CUDA",
+        "Tokenizers",
+        "Pretraining"
+      ]
+    },
+    {
+      "tag": "AI ASSISTANT",
+      "badge": "Planned",
+      "badgeCls": "br",
+      "title": "Jarvis — Personal Assistant",
+      "body": "A locally hosted assistant on Llama 3.1 8B with persistent memory in SQLite for conversation history and long-term facts. Deferred until the site chatbot is finished and a viable remote inference endpoint exists.",
+      "tags": [
+        "Llama 3.1 8B",
+        "SQLite",
+        "Ollama",
+        "Python"
+      ]
+    },
+    {
+      "tag": "EMBEDDED",
+      "badge": "Planned",
+      "badgeCls": "br",
+      "title": "ESP32 Room Presence",
+      "body": "ESP32 devices using BLE presence detection to work out which room I'm in, then sending control commands to a central device handling Spotify playback and voice assistant functions — smart-home behaviour on owned hardware, with no cloud dependency.",
+      "tags": [
+        "ESP32",
+        "BLE",
+        "Arduino",
+        "Spotify API"
+      ]
+    },
+    {
+      "tag": "FULL-STACK",
+      "badge": "Planned",
+      "badgeCls": "br",
+      "title": "Gamification App",
+      "body": "A productivity app that gamifies daily life — tracking skills, XP, levels, and goals to make learning and finishing projects intrinsically motivating. Full-stack, targeting self-hosted deployment on the existing k3s cluster.",
+      "tags": [
+        "Full-stack",
+        "k3s",
+        "Self-hosted"
+      ]
+    }
+  ],
+  "homelab": {
+    "access": [
+      {
+        "label": "media.sakethmetta.org — live",
+        "cls": "ap-live",
+        "pulse": true,
+        "delay": 0
+      },
+      {
+        "label": "Cloudflare Tunnel",
+        "cls": "ap-tunnel",
+        "pulse": true,
+        "delay": 0.4
+      },
+      {
+        "label": "Tailscale VPN",
+        "cls": "ap-vpn",
+        "pulse": true,
+        "delay": 0.8
+      },
+      {
+        "label": "sakethmetta.org — portfolio",
+        "cls": "ap-tunnel",
+        "pulse": false,
+        "delay": 0
+      }
+    ],
+    "nodes": [
+      {
+        "name": "MachineGun",
+        "nameCls": "b",
+        "dotCls": "b",
+        "ip": "internal LAN · k3s node",
+        "specs": [
+          {
+            "k": "role",
+            "v": "k3s worker · compute + LLM inference"
+          },
+          {
+            "k": "cpu",
+            "v": "12 cores"
+          },
+          {
+            "k": "ram",
+            "v": "16 GB"
+          },
+          {
+            "k": "gpu",
+            "v": "GTX 1060 6GB — Jellyfin transcode + Ollama"
+          },
+          {
+            "k": "os",
+            "v": "Ubuntu 24.04 bare-metal"
+          }
+        ],
+        "services": [
+          "Jellyfin",
+          "Audiobookshelf",
+          "Kavita",
+          "Navidrome",
+          "Ollama",
+          "ChromaDB",
+          "n8n",
+          "NVIDIA plugin"
+        ]
+      },
+      {
+        "name": "hunter-inspiron",
+        "nameCls": "",
+        "dotCls": "",
+        "ip": "internal LAN · NAS node",
+        "specs": [
+          {
+            "k": "role",
+            "v": "k3s control plane · NAS"
+          },
+          {
+            "k": "model",
+            "v": "Dell Inspiron 5559"
+          },
+          {
+            "k": "cpu",
+            "v": "Intel i5-6200U (4T)"
+          },
+          {
+            "k": "ram",
+            "v": "8 GB DDR3 @ 1600 MT/s"
+          },
+          {
+            "k": "storage",
+            "v": "2× 5.5TB ext4 → mergerfs 11TB pool"
+          },
+          {
+            "k": "os",
+            "v": "Ubuntu 24.04 LTS"
+          }
+        ],
+        "services": [
+          "k3s server",
+          "NFS server",
+          "cloudflared",
+          "mergerfs"
+        ]
+      }
+    ],
+    "storage": [
+      {
+        "k": "Total Pool",
+        "v": "11TB",
+        "sub": "2× 5.5TB via mergerfs"
+      },
+      {
+        "k": "Used",
+        "v": "~10TB",
+        "sub": "actively in use"
+      },
+      {
+        "k": "Pods",
+        "v": "24",
+        "sub": "across 2 namespaces"
+      },
+      {
+        "k": "Uptime",
+        "v": "Since Jan 2026",
+        "sub": "running continuously"
+      }
+    ],
+    "stack": {
+      "infra": [
+        "k3s",
+        "Helm",
+        "GitOps",
+        "mergerfs",
+        "NFS",
+        "Tailscale",
+        "Cloudflare",
+        "NVIDIA plugin"
+      ],
+      "media": [
+        "Jellyfin",
+        "Audiobookshelf",
+        "Kavita",
+        "Navidrome",
+        "n8n"
+      ],
+      "monitoring": [
+        "Prometheus",
+        "Grafana",
+        "Alertmanager",
+        "node-exporter",
+        "kube-state-metrics",
+        "ntfy",
+        "ntfy-bridge",
+        "alertmanager-discord",
+        "nvidia-gpu-exporter"
+      ],
+      "other": [
+        "Nextcloud",
+        "OpenClaw",
+        "Ollama",
+        "ChromaDB",
+        "Claude Code agents",
+        "Playwright MCP",
+        "Headless Chromium (CDP)",
+        "Llama 3.1 8B",
+        "Discord approvals",
+        "systemd + Xvfb"
+      ]
+    }
+  },
+  "experience": {
+    "software": [
+      {
+        "role": "Graduate Teaching Assistant",
+        "org": "Oregon State University",
+        "period": "2024 – June 2026",
+        "summary": "Supported CS 325 (Analysis of Algorithms) and CS 440 (Database Management Systems) across on-campus and Ecampus online formats.",
+        "stack": [
+          "Algorithms",
+          "Databases",
+          "C++",
+          "Python",
+          "SQL"
+        ],
+        "contributions": [
+          {
+            "title": "Teaching",
+            "body": "Ran office hours and mentored students on algorithm analysis and project design."
+          },
+          {
+            "title": "Assessment",
+            "body": "Graded programming assignments and exams; developed rubrics and homework solutions."
+          },
+          {
+            "title": "Course Delivery",
+            "body": "Collaborated with faculty on academic integrity reviews and course improvements."
+          },
+          {
+            "title": "Automation",
+            "body": "Built a Python pipeline that compiles, runs, and validates student C++ submissions, cutting hours of manual grading per assignment."
+          }
+        ]
+      },
+      {
+        "role": "Salesforce Engineer (Part-Time)",
+        "org": "Oregon State University",
+        "period": "June 2024 – June 2026",
+        "summary": "Automated curriculum approval workflows on the enterprise Salesforce platform behind Oregon State's academic operations — reducing approval turnaround by roughly a week and touching records for 4,000+ graduate students university-wide.",
+        "stack": [
+          "Lightning Web Components",
+          "Apex",
+          "Flows",
+          "SOQL",
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ],
+        "contributions": [
+          {
+            "title": "Curriculum Change Automation",
+            "body": "Integrated DocuSign PDFs into Salesforce Flows so curriculum changes route and record automatically instead of by hand."
+          },
+          {
+            "title": "Course Validation",
+            "body": "Added warnings in the program-of-study tool that catch zero-credit and duplicate courses before they corrupt degree tracking."
+          },
+          {
+            "title": "Grade Policy Enforcement",
+            "body": "Customized approval workflows to enforce departmental grade requirements automatically."
+          },
+          {
+            "title": "Access & Reporting",
+            "body": "Built custom permission sets for faculty committee assignments and exam scheduling."
+          },
+          {
+            "title": "Platform Work",
+            "body": "Developed Apex classes and Lightning Web Components with cross-functional university teams."
+          },
+          {
+            "title": "Accessibility",
+            "body": "Delivered WCAG AA improvements through cross-functional work with academic and engineering stakeholders."
+          }
+        ]
+      }
+    ],
+    "unrelated": [
+      {
+        "role": "Senior Associate — Account Management",
+        "org": "Sutherland Global Services",
+        "period": "January 2021 – August 2023",
+        "body": "Managed and trained a team of 20 supporting Spotify's artist content operations; recognized as best advisor for 24+ months. Built out a direct feature-request service for artists and served as backup Real-Time Analyst, keeping the floor on service-level targets."
+      },
+      {
+        "role": "D2TS Associate",
+        "org": "Amazon Development Centre",
+        "period": "August 2019 – March 2020",
+        "body": "Troubleshot hardware and software issues for Amazon Echo and Kindle devices, trained new advisors on support processes, and held a top-performer record against metrics throughout tenure."
+      }
+    ]
+  },
+  "skills": [
+    {
+      "title": "Languages",
+      "items": [
+        "Python",
+        "C / C++",
+        "Java",
+        "SQL / PostgreSQL",
+        "JavaScript / Node.js",
+        "Bash / Shell"
+      ]
+    },
+    {
+      "title": "Systems & Infra",
+      "items": [
+        "k3s / Kubernetes",
+        "Helm / GitOps",
+        "Linux (Ubuntu 24.04)",
+        "Docker / containerd",
+        "NFS / mergerfs",
+        "Tailscale",
+        "Cloudflare Zero Trust"
+      ]
+    },
+    {
+      "title": "Databases",
+      "items": [
+        "PostgreSQL internals",
+        "Query optimization",
+        "Join algorithms",
+        "Indexing",
+        "Buffer management",
+        "Relational algebra"
+      ]
+    },
+    {
+      "title": "ML & Research",
+      "items": [
+        "PyTorch",
+        "HuggingFace",
+        "OpenCV",
+        "Pandas / NumPy",
+        "Probabilistic algorithms",
+        "Statistical estimation"
+      ]
+    },
+    {
+      "title": "Parallel & Embedded",
+      "items": [
+        "CUDA",
+        "OpenMP",
+        "SIMD",
+        "ROS2 / Gazebo / Nav2",
+        "Arduino / ESP32",
+        "Sensor integration"
+      ]
+    },
+    {
+      "title": "Agentic AI & DevOps",
+      "items": [
+        "Agentic pipeline design",
+        "Claude Code / Playwright MCP",
+        "Local LLMs (Ollama / Llama 3.1)",
+        "Human-in-the-loop approval flows",
+        "Git / GitHub · CI/CD",
+        "AWS"
+      ]
+    }
+  ]
+}

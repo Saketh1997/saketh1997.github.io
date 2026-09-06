@@ -667,7 +667,14 @@
        bottom, with the panel growing upward (matches transform-origin) —
        plain `column` left the button floating ~490px above the corner */
     display: flex; flex-direction: column-reverse; align-items: flex-end; gap: .75rem;
+    /* The closed panel still occupies its layout box, so this container is a
+       ~337x460 rectangle pinned to the bottom-right corner at z-index 9000.
+       Without this it swallowed every tap and text selection in the lower
+       two thirds of a phone screen. The container is only a positioner —
+       the toggle and the open panel opt back in below. */
+    pointer-events: none;
   }
+  #chat-toggle { pointer-events: auto; }
 
   /* Toggle button */
   #chat-toggle {

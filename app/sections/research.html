@@ -4,15 +4,23 @@
       <div>
         <h2 class="sec-title">PostgreSQL Join<br>Algorithm Research</h2>
         <div class="research-body">
-          <p>My primary research contribution is modifying PostgreSQL's nested loop join executor
-             (<span class="inline-code">src/backend/executor/nodeNestloop.c</span>) to implement
-             and benchmark adaptive approximation strategies against the simple baseline.</p>
-          <p>Traditional joins require complete table scans before returning results. I'm implementing
-             and comparing online/adaptive strategies that return statistically confident approximate
-             results mid-execution — enabling early termination on large datasets like TPC-H 10GB.</p>
-          <p>Two statistical estimators — <strong>Des Raj</strong> and
-             <strong>Horvitz-Thompson</strong> — are evaluated across three LV configurations,
-             with accuracy plotted as a function of output percentage.</p>
+          <p>I'm a co-author on a paper implementing a novel adaptive join algorithm inside PostgreSQL's
+             nested loop executor (<span class="inline-code">src/backend/executor/nodeNestloop.c</span>),
+             targeting VLDB, SIGMOD, or AIDB.</p>
+          <p>Traditional nested loop joins scan entire relations before producing a single result, which
+             makes them impractical on large inputs. <strong>OSL</strong> (Online Sequential Learning)
+             treats this as a multi-armed bandit: each outer tuple is explored until it accumulates N
+             consecutive failures, tuples are ranked by the resulting reward, and a left cache is drawn by
+             weighted random sampling — with zero-reward tuples collectively reserved a 10% allocation so
+             nothing is starved of exploration.</p>
+          <p><strong>ROSL</strong> extends OSL with an unbiased estimator of the total join count, so the
+             query can report approximate aggregates at fixed intervals instead of waiting for completion.
+             Because tuples are selected with different probabilities at different steps, naive aggregation
+             is biased; ROSL corrects it with <strong>Inverse Selection Probability Weighting</strong> and
+             stabilizes variance with adaptive weights, yielding a consistent, asymptotically normal
+             estimator — and therefore statistically valid confidence intervals on the running estimate.</p>
+          <p>Empirically ROSL lands <strong>within 8% error of Ripple Join</strong>, an established
+             approximate-join baseline, while producing results significantly faster on large datasets.</p>
         </div>
         <!-- populated by renderResearch() -->
         <div class="dataset-row"></div>
@@ -25,9 +33,9 @@
         <div style="margin-top:2rem;padding:1.2rem;background:var(--bg3);border:.5px solid var(--border2);border-radius:4px">
           <div style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem">Next Steps</div>
           <div style="font-size:.83rem;color:var(--muted);line-height:1.7">
-            Formalize experiment registry → normalize implementation variants →
-            produce final comparison grid (method × dataset × LV × accuracy × runtime × memory) →
-            convert to thesis/paper.
+            Stabilize the confidence-interval calculation and est_count estimation → finalize the
+            comparison grid (method × dataset × accuracy × runtime × memory) → submit to
+            VLDB / SIGMOD / AIDB.
           </div>
         </div>
       </div>
