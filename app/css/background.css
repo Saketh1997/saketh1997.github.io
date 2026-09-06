@@ -1,0 +1,88 @@
+/* ============================================================
+   background.css — site-wide ambient backdrop
+
+   Replaces the old letter-glitch canvas. Pure CSS: no canvas, no
+   requestAnimationFrame, no per-frame repaint. The only animation is
+   a transform on two blurred blobs, which the compositor handles on
+   the GPU — effectively free on a phone, where the old canvas was
+   redrawing a full-viewport character grid every frame.
+   ============================================================ */
+
+#site-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  /* lvh = viewport with the mobile toolbar retracted, so the browser
+     chrome sliding in and out never resizes this box */
+  height: 100vh;
+  height: 100lvh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* --- Layer 1: engineering lattice ---------------------------
+   A quiet blueprint grid. Faded out toward the edges so it reads as
+   texture rather than as a table. */
+#site-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(238,232,213,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238,232,213,.028) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 20%, transparent 90%);
+          mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 20%, transparent 90%);
+}
+
+/* --- Layer 2: vignette --------------------------------------
+   Darkens the corners so body copy always has contrast under it. */
+#site-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 75% 60% at 50% 40%,
+              transparent 0%, rgba(6,6,8,.55) 75%, rgba(6,6,8,.85) 100%);
+}
+
+/* --- Layer 3: two slow amber/blue glows ---------------------- */
+.bg-glow {
+  position: absolute;
+  width: 62vmax; height: 62vmax;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .18;
+  will-change: transform;
+}
+.bg-glow.a {
+  top: -22vmax; left: -14vmax;
+  background: radial-gradient(circle, var(--amber) 0%, transparent 68%);
+  animation: drift-a 34s ease-in-out infinite alternate;
+}
+.bg-glow.b {
+  bottom: -26vmax; right: -18vmax;
+  background: radial-gradient(circle, var(--blue) 0%, transparent 68%);
+  opacity: .13;
+  animation: drift-b 44s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  from { transform: translate3d(0, 0, 0)        scale(1); }
+  to   { transform: translate3d(9vw, 7vh, 0)    scale(1.14); }
+}
+@keyframes drift-b {
+  from { transform: translate3d(0, 0, 0)        scale(1.1); }
+  to   { transform: translate3d(-8vw, -6vh, 0)  scale(1); }
+}
+
+/* Touch devices: a 90px blur across two 62vmax blobs is the one
+   genuinely expensive thing here. Shrink the blur radius, hold them
+   still, and keep only the static tint. */
+@media (hover: none), (pointer: coarse) {
+  .bg-glow   { filter: blur(60px); animation: none; opacity: .15; }
+  .bg-glow.b { opacity: .11; }
+  #site-bg::before { background-size: 44px 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-glow { animation: none; }
+}

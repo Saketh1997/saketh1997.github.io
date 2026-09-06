@@ -3,6 +3,11 @@
    ============================================================ */
    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+   /* mobile baseline */
+   img, video { max-width: 100%; height: auto; display: block; }
+   svg { max-width: 100%; display: block; }
+   a, button { -webkit-tap-highlight-color: transparent; }
+
    :root {
      --bg:       #0b0b0d;
      --bg2:      #111114;
@@ -15,6 +20,9 @@
      --muted:    #8a8476;
      --blue:     #4b9de2;
      --blue-lo:  #1b3c5c;
+     /* readable text variants of the two -lo border tints (~5:1 on --bg3) */
+     --amber-dim: #b3892b;
+     --blue-dim:  #5f93c4;
      --green:    #4ec47a;
      --border:   rgba(223,160,32,.15);
      --border2:  rgba(255,255,255,.06);
@@ -55,6 +63,7 @@
    section[id] { scroll-margin-top: calc(var(--nav-h) + 24px); }
    body {
      background: var(--bg);
+     overflow-x: hidden;
      color: var(--cream);
      font-family: var(--sans);
      line-height: 1.7;
@@ -146,7 +155,7 @@
    }
    .mobile-menu a::before {
      counter-increment: mm; content: '0' counter(mm);
-     font-size: 10px; color: var(--amber-lo); letter-spacing: .08em;
+     font-size: 10px; color: var(--amber-dim); letter-spacing: .08em;
    }
    .mobile-menu a.active { color: var(--amber); }
    .mobile-menu a.active::before { color: var(--amber); }
@@ -155,6 +164,9 @@
    .logo {
      font-family: var(--mono); font-size: 12px;
      color: var(--amber); text-decoration: none; letter-spacing: .1em;
+     /* the text is only ~20px tall — pad out to a thumb-sized hit area */
+     display: inline-flex; align-items: center;
+     min-height: 44px; margin-block: -12px;
    }
    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
    .nav-links a {
@@ -207,15 +219,6 @@
      padding: 9rem var(--gutter-r) 5rem var(--gutter-l);
      position: relative; overflow: hidden;
    }
-   .grid-bg {
-     position: absolute; inset: 0; pointer-events: none;
-     background-image:
-       linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
-       linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
-     background-size: 56px 56px;
-     -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 40%, transparent 100%);
-     mask-image:         radial-gradient(ellipse 80% 70% at 50% 40%, #000 40%, transparent 100%);
-   }
    .hero-eyebrow {
      font-family: var(--mono); font-size: 11px;
      color: var(--amber); letter-spacing: .16em; text-transform: uppercase;
@@ -251,7 +254,9 @@
    .hero-icon {
      display: inline-flex; align-items: center; justify-content: center;
      width: 44px; height: 44px; flex-shrink: 0;
+     color: var(--muted); transition: color .2s;
    }
+   .hero-icon:hover { color: var(--cream); }
    .btn-solid { background: var(--amber); color: #0b0b0d; font-weight: 500; }
    .btn-solid:hover { background: var(--amber-hi); }
    .btn-outline {
@@ -318,6 +323,7 @@
    .inline-code {
      font-family: var(--mono); font-size: .82em; color: var(--amber);
      background: rgba(223,160,32,.08); padding: .1rem .35rem; border-radius: 2px;
+     overflow-wrap: anywhere;
    }
    .method-grid { display: flex; flex-direction: column; gap: .6rem; margin-top: 1rem; }
    .method-row {
@@ -432,10 +438,10 @@
    .node-bd { padding: 1rem 1.1rem; }
    .spec { display: flex; gap: .5rem; margin-bottom: .3rem; align-items: baseline; }
    .spec-k {
-     font-family: var(--mono); font-size: 10px; color: var(--amber-lo);
+     font-family: var(--mono); font-size: 10px; color: var(--amber-dim);
      min-width: 56px; letter-spacing: .05em; flex-shrink: 0;
    }
-   .spec-k.b { color: var(--blue-lo); }
+   .spec-k.b { color: var(--blue-dim); }
    .spec-v { font-size: .82rem; color: var(--muted); }
    .svc-list {
      display: flex; flex-wrap: wrap; gap: .35rem;
@@ -537,7 +543,7 @@
      font-family: var(--mono); font-size: 11px; color: var(--muted);
      display: flex; align-items: center; gap: .5rem;
    }
-   .sg-list li::before { content: '▸'; color: var(--amber-lo); font-size: .65em; }
+   .sg-list li::before { content: '▸'; color: var(--amber-dim); font-size: .65em; }
    
    /* ============================================================
       CONTACT
@@ -838,5 +844,69 @@
     /* these start hidden and are revealed by animation — pin them visible */
     .reveal, .method-row { opacity: 1 !important; transform: none !important; }
     .loader-fill { width: 100% !important; }
-    #letter-glitch-bg { display: none; }
+    .bg-glow { animation: none !important; }
+  }
+  /* ============================================================
+     MOBILE HARDENING
+     ============================================================ */
+
+  /* Long unbreakable strings — file paths, IPs, tunable constants,
+     service names — were the only source of horizontal overflow at
+     360px. Let them wrap instead of widening the page. */
+  .const-item, .node-ip, .spec-v, .svc, .p-tag,
+  .exp-stack-chip, .stack-chip, .chip, .info-val,
+  .msg-bubble, .method-name {
+    overflow-wrap: anywhere;
+  }
+
+  /* Rows that put an item on the right with margin-left:auto need to be
+     allowed to wrap, or the right-hand item forces the row wider than
+     the screen. */
+  .node-hd, .method-row { flex-wrap: wrap; }
+  .method-name { flex: 1 1 auto; min-width: 0; }
+  .node-ip     { margin-left: auto; }
+
+  /* On a touch screen :hover latches after a tap and the card stays
+     lifted/highlighted until you tap elsewhere. Reset the hover-only
+     movement; the pointer-fine experience is unchanged. */
+  @media (hover: none), (pointer: coarse) {
+    .p-card:hover      { transform: none; border-top-color: transparent; border-color: var(--border2); }
+    .exp-card:hover    { border-color: var(--border2); border-left-color: var(--amber); }
+    .exp-card.prior:hover { border-left-color: var(--blue); }
+    .stack-chip:hover  { border-color: var(--border2); color: var(--muted); }
+    .c-link:hover      { color: var(--muted); border-color: var(--border2); }
+    .btn-solid:hover   { background: var(--amber); }
+    .btn-outline:hover { color: var(--muted); border-color: rgba(255,255,255,.15); }
+    .hero-icon:hover   { color: var(--muted); }
+    .nav-links a:hover { color: var(--muted); }
+    #chat-toggle:hover { transform: none; box-shadow: 0 4px 20px rgba(223,160,32,.35); background: var(--amber); }
+    #chat-send:hover   { transform: none; background: var(--amber); }
+
+    /* give tapped elements real feedback in place of hover */
+    .p-card:active     { border-top-color: var(--amber); }
+    .c-link:active,
+    .stack-chip:active { color: var(--amber); border-color: var(--amber-lo); }
+    #chat-toggle:active { transform: scale(.94); }
+  }
+
+  /* Small phones (≤400px): the 2-up storage grid and the 4-across
+     chip rows get too cramped to read. */
+  @media (max-width: 400px) {
+    .hl-storage { grid-template-columns: 1fr; }
+    .st-cell { border-right: none; }
+    .hl-access { gap: .5rem; }
+    .access-pill { font-size: 10px; padding: .4rem .8rem; }
+    .exp-card-head { gap: .4rem 1rem; }
+    .sec { padding-block: 2.75rem; }
+    h2.sec-title { margin-bottom: 1.8rem; }
+    .contact-links { gap: .6rem; }
+    .c-link { padding: .55rem .9rem; }
+  }
+
+  /* Landscape phone: 100svh of hero plus 9rem of padding leaves no room
+     for the copy. Let the hero size to its content instead. */
+  @media (max-height: 520px) and (orientation: landscape) {
+    #hero { min-height: 0; padding-top: 6.5rem; padding-bottom: 3rem; }
+    .mobile-menu { justify-content: flex-start; }
+    .mobile-menu a { min-height: 44px; }
   }

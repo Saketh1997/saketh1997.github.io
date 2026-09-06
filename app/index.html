@@ -17,13 +17,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/letterGlitch.css">
+  <link rel="stylesheet" href="/css/background.css">
   <link rel="stylesheet" href="/css/gooeyNav.css">
 </head>
 <body>
 
-  <!-- Animated letter-glitch background -->
-  <div id="letter-glitch-bg"></div>
+  <!-- Ambient backdrop: blueprint lattice + two slow glows (CSS only) -->
+  <div id="site-bg" aria-hidden="true">
+    <div class="bg-glow a"></div>
+    <div class="bg-glow b"></div>
+  </div>
 
   <!-- Loading overlay -->
   <div id="page-loader">
@@ -103,7 +106,6 @@
   </div>
 
   <!-- UI components (vanilla) — load before main.js so it can init them -->
-  <script src="/js/letterGlitch.js"></script>
   <script src="/js/gooeyNav.js"></script>
   <script src="/js/decryptedText.js"></script>
   <script src="/js/main.js"></script>

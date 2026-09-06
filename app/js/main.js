@@ -351,7 +351,6 @@
    
    /* ---- Boot ------------------------------------------------ */
    async function boot() {
-     window.LetterGlitch?.init();       // background — independent of sections
      await loadSections();
      await loadContent();
      initReveal();
