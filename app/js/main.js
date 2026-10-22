@@ -2,7 +2,7 @@
    main.js — Section loader + dynamic content renderer
    ============================================================ */
 
-   const SECTIONS = ['hero','about','research','projects','homelab','experience','skills','contact'];
+   const SECTIONS = ['hero','about','research','projects','hackathons','homelab','experience','skills','contact'];
 
    /* matches the CSS breakpoint where the header tabs give way to the drawer */
    const mobileNavMQ = window.matchMedia('(max-width: 860px)');
@@ -58,6 +58,7 @@
      renderInfoRows(data.about);
      renderResearch(data.research);
      renderProjects(data.projects);
+     renderProjects(data.hackathons, '#hackathons .projects-grid');
      renderHomelab(data.homelab);
      renderExperience(data.experience);
      renderSkills(data.skills);
@@ -135,8 +136,8 @@
      }
    }
    
-   function renderProjects(projects) {
-     const grid = document.querySelector('.projects-grid');
+   function renderProjects(projects, gridSel = '#projects .projects-grid') {
+     const grid = document.querySelector(gridSel);
      if (!grid || !projects) return;
      grid.innerHTML = projects.map(p => `
        <div class="p-card">

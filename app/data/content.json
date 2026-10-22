@@ -158,24 +158,6 @@
       ]
     },
     {
-      "tag": "HACKATHON",
-      "badge": "Oct 2026",
-      "badgeCls": "ba",
-      "title": "Fo Assist — Android Voice Agent",
-      "body": "Built in one weekend for Wajo's GSD virtual hackathon. A plain-Java Android assistant sends voice and screenshot requests to Fo, Wajo's AI agent, through a stdlib-Python bridge on my k3s cluster that speaks Fo's MCP over OAuth (DCR + PKCE) and pushes replies back via self-hosted ntfy. Approvals are single-use so stale or duplicate taps are rejected, each phone signs in with its own Wajo account, and a busy-call auto-reply texts contacts while I'm on another call.",
-      "tags": [
-        "Java",
-        "Android",
-        "Python",
-        "MCP",
-        "OAuth",
-        "k3s",
-        "ntfy"
-      ],
-      "link": "https://github.com/Saketh1997/fo-assistant",
-      "linkText": "github.com/Saketh1997/fo-assistant"
-    },
-    {
       "tag": "SELF-HOSTED AI",
       "badge": "Live",
       "badgeCls": "bl",
@@ -281,6 +263,26 @@
         "k3s",
         "Self-hosted"
       ]
+    }
+  ],
+  "hackathons": [
+    {
+      "tag": "WAJO GSD HACKATHON",
+      "badge": "Oct 2026",
+      "badgeCls": "ba",
+      "title": "Fo Assist — Android Voice Agent",
+      "body": "Built in one weekend (Oct 17–19, 2026) on early access to Wajo's Fo MCP server. A plain-Java Android assistant sends voice and screenshot requests to Fo, Wajo's AI agent, through a stdlib-Python bridge on my k3s cluster that speaks Fo's MCP over OAuth (DCR + PKCE) and pushes replies back via self-hosted ntfy. Approvals are single-use so stale or duplicate taps are rejected, each phone signs in with its own Wajo account, and a busy-call auto-reply texts contacts while I'm on another call.",
+      "tags": [
+        "Java",
+        "Android",
+        "Python",
+        "MCP",
+        "OAuth",
+        "k3s",
+        "ntfy"
+      ],
+      "link": "https://github.com/Saketh1997/fo-assistant",
+      "linkText": "github.com/Saketh1997/fo-assistant"
     }
   ],
   "homelab": {
