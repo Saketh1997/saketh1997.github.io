@@ -147,6 +147,7 @@
          <div class="p-title">${p.title}</div>
          <div class="p-body">${p.body}</div>
          <div class="p-tags">${p.tags.map(t=>`<span class="p-tag">${t}</span>`).join('')}</div>
+         ${p.link ? `<a class="p-link" href="${p.link}" target="_blank" rel="noopener">${p.linkText || 'Source'} &#8599;</a>` : ''}
        </div>`).join('');
    }
    
